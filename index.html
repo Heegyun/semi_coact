@@ -631,53 +631,64 @@ function pickCat(id){
 }
 
 function buildForm(cat){
-  const fw=document.getElementById('formWrap'); fw.innerHTML='';
+  const fw=document.getElementById('formWrap');
 
   /* selected subs — filter out any stale indices beyond this cat's subs length */
   const idxs=[...selSubs].filter(i=>i<cat.subs.length);
   const active=idxs.length?idxs.map(i=>cat.subs[i]):[cat.subs[0]];
 
+  /* ── preserve existing input values before clearing ── */
+  const saved={};
+  fw.querySelectorAll('input,select,textarea').forEach(el=>{
+    if(el.id) saved[el.id]=el.value;
+  });
+
+  fw.innerHTML='';
+
   active.forEach((sub,si)=>{
     if(active.length>1){
+      if(si>0){ const div=document.createElement('div'); div.style.cssText='height:1px;background:var(--border);margin:4px 0 14px;'; fw.appendChild(div); }
       const hdr=document.createElement('div');
-      hdr.style.cssText='font-size:13px;font-weight:800;color:var(--muted);padding:2px 0 6px;display:flex;align-items:center;gap:6px;';
+      hdr.style.cssText='font-size:13px;font-weight:800;color:var(--muted);padding:2px 0 8px;display:flex;align-items:center;gap:6px;';
       hdr.innerHTML=`<span>${sub.e}</span>${sub.n}`;
-      if(si>0){ const div=document.createElement('div'); div.style.cssText='height:1px;background:var(--border);margin:6px 0 14px;'; fw.appendChild(div); }
       fw.appendChild(hdr);
     }
 
-    /* build fields, pairing text+select in rows of 2 */
+    /* build fields, pairing adjacent text/select in rows of 2 */
     const fields=sub.form; let fi=0;
     while(fi<fields.length){
       const f=fields[fi];
       if(f.t==='ta'||fi===fields.length-1){
-        fw.appendChild(mkField(f,sub,si));fi++;
+        fw.appendChild(mkField(f,sub,si,saved));fi++;
       } else {
         const nxt=fields[fi+1];
         if(nxt&&nxt.t!=='ta'){
           const row=document.createElement('div'); row.className='two';
-          row.appendChild(mkField(f,sub,si)); row.appendChild(mkField(nxt,sub,si));
+          row.appendChild(mkField(f,sub,si,saved)); row.appendChild(mkField(nxt,sub,si,saved));
           fw.appendChild(row); fi+=2;
-        } else { fw.appendChild(mkField(f,sub,si)); fi++; }
+        } else { fw.appendChild(mkField(f,sub,si,saved)); fi++; }
       }
     }
-    document.getElementById('s3title').textContent=
-      active.length===1?`${active[0].e} ${active[0].n} — 내용 입력`:'선택한 유형 내용 입력';
   });
+
+  document.getElementById('s3title').textContent=
+    active.length===1?`${active[0].e} ${active[0].n} — 내용 입력`:'선택한 유형 내용 입력';
 }
 
-function mkField(f,sub,si){
+function mkField(f,sub,si,saved={}){
   const wrap=document.createElement('div'); wrap.className='field';
   const uid=`f_${si}_${f.id}`;
+  const prev=saved[uid]||'';
   let ctrl='';
-  if(f.t==='text')
-    ctrl=`<input type="text" id="${uid}" placeholder="${f.ph||''}" ${f.req?'required':''}>`;
-  else if(f.t==='sel'){
-    const opts=f.opts.map(o=>`<option value="${o}">${o}</option>`).join('');
-    ctrl=`<select id="${uid}"><option value="">선택해주세요</option>${opts}</select>`;
-  } else
-    ctrl=`<textarea id="${uid}" rows="${f.rows||2}" placeholder="${f.ph||''}"></textarea>`;
-
+  if(f.t==='text'){
+    const safeVal=prev.replace(/"/g,'&quot;');
+    ctrl=`<input type="text" id="${uid}" placeholder="${f.ph||''}" value="${safeVal}" ${f.req?'required':''}>`;
+  } else if(f.t==='sel'){
+    const opts=f.opts.map(o=>`<option value="${o}"${o===prev?' selected':''}>${o}</option>`).join('');
+    ctrl=`<select id="${uid}"><option value=""${prev?'':' selected'}>선택해주세요</option>${opts}</select>`;
+  } else {
+    ctrl=`<textarea id="${uid}" rows="${f.rows||2}" placeholder="${f.ph||''}">${prev.replace(/</g,'&lt;')}</textarea>`;
+  }
   wrap.innerHTML=`<label class="field-lbl" for="${uid}"><span class="field-em">${f.em}</span>${f.l}${f.req?'<span style="color:var(--accent);margin-left:2px;font-size:14px;">*</span>':''}</label>${ctrl}`;
   return wrap;
 }
