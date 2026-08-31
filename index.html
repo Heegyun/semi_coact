@@ -4,6 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AI 프롬프트 생성기</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
@@ -584,7 +586,8 @@ function reveal(id){
   const el=document.getElementById(id);
   el.classList.remove('hidden');
   el.style.animation='none';
-  requestAnimationFrame(()=>{ el.style.animation=''; });
+  void el.offsetWidth; /* force reflow to restart animation */
+  el.style.animation='popUp .38s cubic-bezier(.34,1.56,.64,1) both';
 }
 
 function pickCat(id){
@@ -593,6 +596,11 @@ function pickCat(id){
     b.classList.toggle('on',b.dataset.id===id);
   });
   const cat=CATS.find(c=>c.id===id);
+
+  /* reset step badges when re-selecting category */
+  const n2=document.getElementById('n2'),n3=document.getElementById('n3');
+  n2.classList.remove('done'); n2.textContent='2';
+  n3.classList.remove('done'); n3.textContent='3';
 
   /* mark step 1 done */
   markDone('n1'); setTracker(2);
@@ -625,8 +633,8 @@ function pickCat(id){
 function buildForm(cat){
   const fw=document.getElementById('formWrap'); fw.innerHTML='';
 
-  /* selected subs (or all if none selected) */
-  const idxs=[...selSubs];
+  /* selected subs — filter out any stale indices beyond this cat's subs length */
+  const idxs=[...selSubs].filter(i=>i<cat.subs.length);
   const active=idxs.length?idxs.map(i=>cat.subs[i]):[cat.subs[0]];
 
   active.forEach((sub,si)=>{
@@ -678,7 +686,7 @@ function mkField(f,sub,si){
 async function doGen(){
   if(busy||!selCat)return;
   const cat=CATS.find(c=>c.id===selCat);
-  const idxs=[...selSubs];
+  const idxs=[...selSubs].filter(i=>i<cat.subs.length);
   const active=idxs.length?idxs.map(i=>cat.subs[i]):[cat.subs[0]];
 
   /* validate required */
@@ -710,6 +718,8 @@ async function doGen(){
   const btn=document.getElementById('genBtn'); btn.disabled=true;
   document.getElementById('gIcon').className='spin'; document.getElementById('gIcon').textContent='⟳';
   document.getElementById('gTxt').textContent='AI가 작성 중...';
+  /* ensure badges are in undone state before marking done (handles re-generate) */
+  ['n2','n3'].forEach(id=>{const el=document.getElementById(id);el.classList.remove('done');});
   markDone('n2'); markDone('n3'); setTracker(4);
 
   const dataStr=sections.map(s=>`[${s.name}]\n`+Object.entries(s.data).map(([k,v])=>`  ${k}: ${v}`).join('\n')).join('\n\n');
@@ -753,15 +763,31 @@ ${dataStr}
 
   try{
     const res=await fetch('https://api.anthropic.com/v1/messages',{
-      method:'POST',headers:{'Content-Type':'application/json'},
+      method:'POST',
+      headers:{
+        'Content-Type':'application/json',
+        'anthropic-version':'2023-06-01',
+        'anthropic-dangerous-direct-browser-access':'true'
+      },
       body:JSON.stringify({
-        model:'claude-sonnet-4-6',max_tokens:1000,stream:true,
+        model:'claude-sonnet-4-5',max_tokens:1000,stream:true,
         system:sys,messages:[{role:'user',content:usr}]
       })
     });
+
+    /* surface HTTP errors (4xx/5xx) before trying to read stream */
+    if(!res.ok){
+      let errMsg=`HTTP ${res.status}`;
+      try{ const j=await res.json(); errMsg=j?.error?.message||errMsg; }catch{}
+      throw new Error(errMsg);
+    }
+
     const reader=res.body.getReader(),dec=new TextDecoder();
-    const ce=document.getElementById('outContent');
+    /* guard: outContent may be replaced if user navigates away */
+    let ce=document.getElementById('outContent');
+    if(!ce) throw new Error('출력 영역을 찾을 수 없습니다');
     ce.innerHTML='<span class="cursor"></span>';
+
     while(true){
       const{done,value}=await reader.read(); if(done)break;
       for(const line of dec.decode(value).split('\n')){
@@ -771,16 +797,17 @@ ${dataStr}
           const p=JSON.parse(d);
           if(p.type==='content_block_delta'&&p.delta?.text){
             outTxt+=p.delta.text;
-            ce.innerHTML=esc(outTxt)+'<span class="cursor"></span>';
-            upStats();
+            ce=document.getElementById('outContent'); /* re-query in case DOM updated */
+            if(ce){ ce.innerHTML=esc(outTxt)+'<span class="cursor"></span>'; upStats(); }
           }
         }catch{}
       }
     }
-    document.getElementById('outContent').innerHTML=esc(outTxt);
-    upStats(); upQual();
+    ce=document.getElementById('outContent');
+    if(ce){ ce.innerHTML=esc(outTxt); upStats(); upQual(); }
   }catch(e){
-    document.getElementById('outContent').innerHTML=`<span style="color:#f87171">⚠ 오류: ${e.message}</span>`;
+    const ce=document.getElementById('outContent');
+    if(ce) ce.innerHTML=`<span style="color:#f87171">⚠ 오류: ${e.message}</span>`;
   }
 
   busy=false; btn.disabled=false;
@@ -815,6 +842,7 @@ function doCopy(){
 }
 function markDone(id){
   const el=document.getElementById(id);
+  if(!el||el.classList.contains('done')) return;
   el.classList.add('done'); el.textContent='✓';
 }
 function setTracker(step){
