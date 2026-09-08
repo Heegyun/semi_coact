@@ -9,50 +9,31 @@
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-
 :root{
-  --bg:#faf9ff;
-  --white:#ffffff;
-  --card:#ffffff;
-  --border:#eae8f8;
-  --border2:#d4d0f0;
-  --text:#1e1b3a;
-  --muted:#7874a0;
-  --light:#f3f1ff;
-
+  --bg:#faf9ff; --white:#fff; --border:#eae8f8; --border2:#d4d0f0;
+  --text:#1e1b3a; --muted:#7874a0; --light:#f3f1ff;
   --c1:#ff6b9d; --c1l:#fff0f6; --c1b:#ffd6e8;
   --c2:#f97316; --c2l:#fff7ed; --c2b:#fed7aa;
   --c3:#06b6d4; --c3l:#ecfeff; --c3b:#a5f3fc;
   --c4:#8b5cf6; --c4l:#f5f3ff; --c4b:#ddd6fe;
   --c5:#10b981; --c5l:#ecfdf5; --c5b:#a7f3d0;
-
-  --accent:#6c5ce7;
-  --accent-l:#ede9ff;
-  --accent-m:#9f8ef5;
-
+  --accent:#6c5ce7; --accent-l:#ede9ff; --accent-m:#9f8ef5;
   --r:14px; --rsm:10px;
 }
-
 body{
   font-family:'Nunito',sans-serif;
-  background:var(--bg);
-  color:var(--text);
-  min-height:100vh;
+  background:var(--bg); color:var(--text); min-height:100vh;
 }
-
-/* ── cheerful background blobs ── */
 body::before{
   content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
   background:
-    radial-gradient(ellipse 500px 400px at 5% 10%, rgba(255,107,157,.10) 0%, transparent 70%),
-    radial-gradient(ellipse 600px 500px at 95% 20%, rgba(108,92,231,.09) 0%, transparent 70%),
-    radial-gradient(ellipse 500px 400px at 50% 95%, rgba(16,185,129,.08) 0%, transparent 70%),
-    radial-gradient(ellipse 400px 350px at 90% 80%, rgba(249,115,22,.07) 0%, transparent 70%);
+    radial-gradient(ellipse 500px 400px at 5% 10%,rgba(255,107,157,.10) 0%,transparent 70%),
+    radial-gradient(ellipse 600px 500px at 95% 20%,rgba(108,92,231,.09) 0%,transparent 70%),
+    radial-gradient(ellipse 500px 400px at 50% 95%,rgba(16,185,129,.08) 0%,transparent 70%);
 }
-
 .page{position:relative;z-index:1;max-width:900px;margin:0 auto;padding:44px 20px 90px;}
 
-/* ── HEADER ── */
+/* HEADER */
 header{text-align:center;margin-bottom:44px;animation:popUp .6s cubic-bezier(.34,1.56,.64,1) both;}
 .hd-pill{
   display:inline-flex;align-items:center;gap:8px;
@@ -67,52 +48,32 @@ header{text-align:center;margin-bottom:44px;animation:popUp .6s cubic-bezier(.34
   box-shadow:0 3px 10px rgba(108,92,231,.35);
 }
 .hd-label{font-size:13px;font-weight:800;color:var(--accent);}
-h1{
-  font-size:clamp(30px,5.5vw,52px);font-weight:900;
-  color:var(--text);letter-spacing:-.025em;line-height:1.1;margin-bottom:10px;
-}
-h1 em{
-  font-style:normal;
-  background:linear-gradient(120deg,#6c5ce7 0%,#fd79a8 60%,#f97316 100%);
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
-}
+h1{font-size:clamp(30px,5.5vw,52px);font-weight:900;color:var(--text);letter-spacing:-.025em;line-height:1.1;margin-bottom:10px;}
+h1 em{font-style:normal;background:linear-gradient(120deg,#6c5ce7 0%,#fd79a8 60%,#f97316 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
 .hd-sub{font-size:15px;color:var(--muted);font-weight:600;}
 
-/* ── STEP TRACKER ── */
+/* TRACKER */
 .tracker{
   display:flex;align-items:center;justify-content:center;gap:4px;
   margin-bottom:36px;animation:popUp .5s .05s cubic-bezier(.34,1.56,.64,1) both;
 }
-.tr-step{
-  display:flex;align-items:center;gap:6px;
-  padding:8px 14px;border-radius:99px;
-  font-size:13px;font-weight:700;color:var(--muted);
-  transition:all .3s ease;
-}
+.tr-step{display:flex;align-items:center;gap:6px;padding:8px 14px;border-radius:99px;font-size:13px;font-weight:700;color:var(--muted);transition:all .3s ease;}
 .tr-step.act{background:var(--accent-l);color:var(--accent);}
 .tr-step.done{color:var(--accent);}
-.tr-num{
-  width:22px;height:22px;border-radius:50%;
-  background:var(--border);display:flex;align-items:center;justify-content:center;
-  font-size:11px;font-weight:900;transition:all .3s ease;flex-shrink:0;
-}
-.tr-step.act .tr-num{background:var(--accent);color:#fff;}
-.tr-step.done .tr-num{background:var(--accent);color:#fff;}
+.tr-num{width:22px;height:22px;border-radius:50%;background:var(--border);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:900;transition:all .3s ease;flex-shrink:0;}
+.tr-step.act .tr-num,.tr-step.done .tr-num{background:var(--accent);color:#fff;}
 .tr-sep{width:20px;height:2px;background:var(--border);border-radius:1px;}
 
-/* ── CARD WRAPPER ── */
+/* CARD */
 .wcard{
   background:var(--white);border:2px solid var(--border);
   border-radius:20px;margin-bottom:14px;
-  box-shadow:0 4px 20px rgba(108,92,231,.07);
-  overflow:hidden;transition:box-shadow .2s;
+  box-shadow:0 4px 20px rgba(108,92,231,.07);overflow:hidden;
 }
-.wcard:has(*:focus){box-shadow:0 8px 32px rgba(108,92,231,.13);}
-
 .wcard-head{
   display:flex;align-items:center;gap:10px;
   padding:16px 20px;border-bottom:2px solid var(--border);
-  background:linear-gradient(to right, var(--light), var(--white));
+  background:linear-gradient(to right,var(--light),var(--white));
 }
 .wcard-num{
   width:28px;height:28px;border-radius:9px;
@@ -126,7 +87,7 @@ h1 em{
 .wcard-hint{font-size:12px;color:var(--muted);font-weight:600;margin-left:auto;}
 .wcard-body{padding:22px;}
 
-/* ── CATEGORY GRID ── */
+/* CATEGORY GRID */
 .cat-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;}
 @media(max-width:600px){.cat-grid{grid-template-columns:repeat(2,1fr);}}
 
@@ -138,55 +99,34 @@ h1 em{
   transition:all .22s cubic-bezier(.34,1.56,.64,1);
 }
 .cat-card:hover{transform:translateY(-5px);border-color:var(--cc);background:var(--ccl);box-shadow:0 10px 26px rgba(0,0,0,.08);}
-.cat-card.on{
-  border-color:var(--cc);background:var(--ccl);
-  transform:translateY(-5px) scale(1.03);
-  box-shadow:0 0 0 4px rgba(var(--ccr),.14), 0 12px 28px rgba(0,0,0,.1);
-}
-.cat-card.on::after{
-  content:'✓';position:absolute;top:8px;right:9px;
-  width:18px;height:18px;border-radius:50%;
-  background:var(--cc);color:#fff;font-size:10px;font-weight:900;
-  display:flex;align-items:center;justify-content:center;
-}
+.cat-card.on{border-color:var(--cc);background:var(--ccl);transform:translateY(-5px) scale(1.03);box-shadow:0 0 0 4px rgba(var(--ccr),.14),0 12px 28px rgba(0,0,0,.1);}
+.cat-card.on::after{content:'✓';position:absolute;top:8px;right:9px;width:18px;height:18px;border-radius:50%;background:var(--cc);color:#fff;font-size:10px;font-weight:900;display:flex;align-items:center;justify-content:center;}
 .cat-emoji{font-size:28px;margin-bottom:8px;display:block;transition:transform .2s;}
 .cat-card:hover .cat-emoji,.cat-card.on .cat-emoji{transform:scale(1.15);}
 .cat-name{font-size:13px;font-weight:800;color:var(--text);}
 .cat-desc{font-size:10.5px;color:var(--muted);font-weight:600;margin-top:3px;line-height:1.3;}
 
-/* ── SUB TYPE LIST ── */
+/* SUB LIST */
 .sub-list{display:flex;flex-direction:column;gap:8px;}
-
 .sub-item{
   display:flex;align-items:center;gap:12px;
   padding:13px 16px;border-radius:var(--r);
   border:2px solid var(--border);background:var(--light);
-  cursor:pointer;transition:all .18s cubic-bezier(.34,1.56,.64,1);
-  text-align:left;width:100%;
+  cursor:pointer;transition:all .18s cubic-bezier(.34,1.56,.64,1);text-align:left;width:100%;
 }
 .sub-item:hover{border-color:var(--cc);background:var(--ccl);transform:translateX(4px);}
 .sub-item.on{border-color:var(--cc);background:var(--ccl);transform:translateX(4px);box-shadow:0 4px 14px rgba(0,0,0,.07);}
 .sub-item.on .sub-check{background:var(--cc);border-color:var(--cc);color:#fff;}
-.sub-check{
-  width:22px;height:22px;border-radius:7px;border:2px solid var(--border2);
-  display:flex;align-items:center;justify-content:center;
-  font-size:11px;font-weight:900;color:transparent;flex-shrink:0;
-  transition:all .2s ease;
-}
+.sub-check{width:22px;height:22px;border-radius:7px;border:2px solid var(--border2);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:900;color:transparent;flex-shrink:0;transition:all .2s ease;}
 .sub-icon{font-size:20px;flex-shrink:0;}
 .sub-info{flex:1;}
 .sub-name{font-size:14px;font-weight:800;color:var(--text);}
 .sub-desc{font-size:11.5px;color:var(--muted);font-weight:600;margin-top:1px;}
 
-/* ── FORM (context inputs) ── */
+/* FORM */
 .form-wrap{display:flex;flex-direction:column;gap:15px;}
-
 .field{display:flex;flex-direction:column;gap:7px;}
-.field-lbl{
-  font-size:12px;font-weight:800;color:var(--muted);
-  letter-spacing:.05em;text-transform:uppercase;
-  display:flex;align-items:center;gap:5px;
-}
+.field-lbl{font-size:12px;font-weight:800;color:var(--muted);letter-spacing:.05em;text-transform:uppercase;display:flex;align-items:center;gap:5px;}
 .field-em{font-size:13px;text-transform:none;}
 
 input[type=text],select,textarea{
@@ -196,22 +136,15 @@ input[type=text],select,textarea{
   padding:11px 14px;outline:none;width:100%;
   transition:border-color .18s,box-shadow .18s,background .18s;
 }
-input[type=text]:focus,select:focus,textarea:focus{
-  border-color:var(--accent);background:var(--white);
-  box-shadow:0 0 0 4px rgba(108,92,231,.10);
-}
+input[type=text]:focus,select:focus,textarea:focus{border-color:var(--accent);background:var(--white);box-shadow:0 0 0 4px rgba(108,92,231,.10);}
 input::placeholder,textarea::placeholder{color:#b0aecb;font-weight:600;}
 textarea{resize:none;line-height:1.65;}
-select{
-  cursor:pointer;appearance:none;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%237874a0' stroke-width='2.5'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
-  background-repeat:no-repeat;background-position:right 13px center;padding-right:38px;
-}
+select{cursor:pointer;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%237874a0' stroke-width='2.5'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 13px center;padding-right:38px;}
 select option{background:#fff;}
 .two{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
 @media(max-width:520px){.two{grid-template-columns:1fr;}}
 
-/* ── GENERATE BUTTON ── */
+/* GEN BUTTON */
 .gen-btn{
   display:flex;align-items:center;justify-content:center;gap:9px;
   width:100%;padding:18px;border:none;border-radius:16px;
@@ -219,31 +152,23 @@ select option{background:#fff;}
   font-family:'Nunito',sans-serif;font-size:16px;font-weight:900;
   color:#fff;cursor:pointer;letter-spacing:.01em;
   box-shadow:0 8px 24px rgba(108,92,231,.35);
-  transition:all .25s cubic-bezier(.34,1.56,.64,1);
-  margin-top:6px;
+  transition:all .25s cubic-bezier(.34,1.56,.64,1);margin-top:6px;
 }
-.gen-btn:hover:not(:disabled){transform:translateY(-3px) scale(1.01);box-shadow:0 16px 40px rgba(108,92,231,.45);}
-.gen-btn:active:not(:disabled){transform:scale(.97);}
-.gen-btn:disabled{opacity:.55;cursor:not-allowed;transform:none;}
+.gen-btn:hover{transform:translateY(-3px) scale(1.01);box-shadow:0 16px 40px rgba(108,92,231,.45);}
+.gen-btn:active{transform:scale(.97);}
 
-/* ── OUTPUT ── */
+/* OUTPUT */
 .out-box{
   background:var(--white);border:2px solid var(--border);
   border-radius:20px;overflow:hidden;margin-top:18px;
   box-shadow:0 12px 40px rgba(108,92,231,.12);
   animation:popUp .4s cubic-bezier(.34,1.56,.64,1) both;
 }
-.out-bar{
-  display:flex;align-items:center;gap:8px;padding:13px 18px;
-  background:#1d1b35;
-}
+.out-bar{display:flex;align-items:center;gap:8px;padding:13px 18px;background:#1d1b35;}
 .tl{display:flex;gap:6px;}
 .tld{width:12px;height:12px;border-radius:50%;}
 .tl-r{background:#ff5f57;}.tl-y{background:#ffbd2e;}.tl-g{background:#28ca40;}
-.out-tab{
-  flex:1;text-align:center;
-  font-family:'DM Mono',monospace;font-size:11.5px;color:#6e6a9f;
-}
+.out-tab{flex:1;text-align:center;font-family:'DM Mono',monospace;font-size:11.5px;color:#6e6a9f;}
 .cp-btn{
   display:flex;align-items:center;gap:5px;
   background:rgba(255,255,255,.08);border:1.5px solid rgba(255,255,255,.14);
@@ -258,15 +183,8 @@ select option{background:#fff;}
   background:#16142c;padding:26px;
   font-family:'DM Mono',monospace;font-size:13.5px;
   line-height:1.9;color:#c8c4ee;
-  min-height:120px;white-space:pre-wrap;word-break:break-word;
+  white-space:pre-wrap;word-break:break-word;
 }
-.cursor{
-  display:inline-block;width:2px;height:1em;
-  background:var(--accent);vertical-align:middle;
-  margin-left:1px;border-radius:1px;
-  animation:blink .75s step-end infinite;
-}
-
 .out-foot{
   display:flex;align-items:center;gap:14px;flex-wrap:wrap;
   padding:12px 18px;background:var(--light);border-top:2px solid var(--border);
@@ -276,333 +194,820 @@ select option{background:#fff;}
 .qwrap{margin-left:auto;display:flex;align-items:center;gap:8px;}
 .qlbl{font-size:11px;font-weight:800;color:var(--muted);}
 .qtrack{width:88px;height:5px;background:var(--border2);border-radius:99px;overflow:hidden;}
-.qfill{height:100%;background:linear-gradient(90deg,var(--accent),#10b981);border-radius:99px;transition:width 1.3s cubic-bezier(.16,1,.3,1);}
+.qfill{height:100%;background:linear-gradient(90deg,var(--accent),#10b981);border-radius:99px;transition:width .8s cubic-bezier(.16,1,.3,1);}
 .qscore{font-size:12px;font-weight:800;color:#10b981;font-family:'DM Mono',monospace;}
+
+/* USAGE TIP */
+.tip-box{
+  display:flex;align-items:flex-start;gap:10px;
+  background:rgba(108,92,231,.06);border:1.5px solid rgba(108,92,231,.15);
+  border-radius:12px;padding:14px 16px;margin-top:14px;
+}
+.tip-icon{font-size:18px;flex-shrink:0;margin-top:1px;}
+.tip-text{font-size:12.5px;color:var(--muted);font-weight:600;line-height:1.6;}
+.tip-text strong{color:var(--accent);}
 
 .hidden{display:none!important;}
 @keyframes popUp{from{opacity:0;transform:scale(.95) translateY(10px)}to{opacity:1;transform:scale(1) translateY(0)}}
-@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
-@keyframes spin{to{transform:rotate(360deg)}}
-.spin{animation:spin .9s linear infinite;display:inline-block;}
-.wcard{animation:popUp .4s ease both;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.wcard{animation:fadeUp .4s ease both;}
 </style>
 </head>
 <body>
 <div class="page">
 
-  <header>
-    <div class="hd-pill">
-      <div class="hd-spark">✨</div>
-      <span class="hd-label">AI 프롬프트 생성기</span>
-    </div>
-    <h1>뭘 만들고 싶은지<br><em>고르기만 하면 돼요</em></h1>
-    <p class="hd-sub">카테고리 → 유형 → 내용 입력 → 프롬프트 완성! 🎉</p>
-  </header>
-
-  <div class="tracker" id="tracker">
-    <div class="tr-step act" id="ts1"><div class="tr-num" id="tn1">1</div>카테고리</div>
-    <div class="tr-sep"></div>
-    <div class="tr-step" id="ts2"><div class="tr-num" id="tn2">2</div>세부 유형</div>
-    <div class="tr-sep"></div>
-    <div class="tr-step" id="ts3"><div class="tr-num" id="tn3">3</div>내용 입력</div>
-    <div class="tr-sep"></div>
-    <div class="tr-step" id="ts4"><div class="tr-num" id="tn4">4</div>생성</div>
+<header>
+  <div class="hd-pill">
+    <div class="hd-spark">✨</div>
+    <span class="hd-label">AI 프롬프트 생성기</span>
   </div>
+  <h1>뭘 만들고 싶은지<br><em>고르기만 하면 돼요</em></h1>
+  <p class="hd-sub">선택한 옵션으로 최적의 프롬프트를 즉시 조합해드려요 🎉</p>
+</header>
 
-  <!-- STEP 1 -->
-  <div class="wcard" id="s1">
-    <div class="wcard-head">
-      <div class="wcard-num" id="n1">1</div>
-      <div class="wcard-title">어떤 프롬프트가 필요해요?</div>
-      <div class="wcard-hint">하나만 선택</div>
-    </div>
-    <div class="wcard-body">
-      <div class="cat-grid" id="catGrid"></div>
-    </div>
-  </div>
-
-  <!-- STEP 2 -->
-  <div class="wcard hidden" id="s2">
-    <div class="wcard-head">
-      <div class="wcard-num" id="n2">2</div>
-      <div class="wcard-title" id="s2title">세부 유형 선택</div>
-      <div class="wcard-hint">복수 선택 가능</div>
-    </div>
-    <div class="wcard-body">
-      <div class="sub-list" id="subList"></div>
-    </div>
-  </div>
-
-  <!-- STEP 3 -->
-  <div class="wcard hidden" id="s3">
-    <div class="wcard-head">
-      <div class="wcard-num" id="n3">3</div>
-      <div class="wcard-title" id="s3title">내용 입력</div>
-      <div class="wcard-hint">입력할수록 정확해져요</div>
-    </div>
-    <div class="wcard-body">
-      <div class="form-wrap" id="formWrap"></div>
-      <button class="gen-btn" id="genBtn" onclick="doGen()" style="margin-top:18px">
-        <span id="gIcon">✨</span>
-        <span id="gTxt">최적의 프롬프트 생성하기</span>
-      </button>
-    </div>
-  </div>
-
-  <div id="outArea"></div>
+<div class="tracker">
+  <div class="tr-step act" id="ts1"><div class="tr-num" id="tn1">1</div>카테고리</div>
+  <div class="tr-sep"></div>
+  <div class="tr-step" id="ts2"><div class="tr-num" id="tn2">2</div>세부 유형</div>
+  <div class="tr-sep"></div>
+  <div class="tr-step" id="ts3"><div class="tr-num" id="tn3">3</div>내용 입력</div>
+  <div class="tr-sep"></div>
+  <div class="tr-step" id="ts4"><div class="tr-num" id="tn4">4</div>완성</div>
 </div>
 
+<!-- STEP 1 -->
+<div class="wcard" id="s1">
+  <div class="wcard-head">
+    <div class="wcard-num" id="n1">1</div>
+    <div class="wcard-title">어떤 프롬프트가 필요해요?</div>
+    <div class="wcard-hint">하나만 선택</div>
+  </div>
+  <div class="wcard-body">
+    <div class="cat-grid" id="catGrid"></div>
+  </div>
+</div>
+
+<!-- STEP 2 -->
+<div class="wcard hidden" id="s2">
+  <div class="wcard-head">
+    <div class="wcard-num" id="n2">2</div>
+    <div class="wcard-title" id="s2title">세부 유형 선택</div>
+    <div class="wcard-hint">복수 선택 가능</div>
+  </div>
+  <div class="wcard-body">
+    <div class="sub-list" id="subList"></div>
+  </div>
+</div>
+
+<!-- STEP 3 -->
+<div class="wcard hidden" id="s3">
+  <div class="wcard-head">
+    <div class="wcard-num" id="n3">3</div>
+    <div class="wcard-title" id="s3title">내용 입력</div>
+    <div class="wcard-hint">입력할수록 정확해져요</div>
+  </div>
+  <div class="wcard-body">
+    <div class="form-wrap" id="formWrap"></div>
+    <button class="gen-btn" onclick="doGen()" style="margin-top:18px">
+      ✨ 프롬프트 생성하기
+    </button>
+  </div>
+</div>
+
+<div id="outArea"></div>
+
+</div><!-- /page -->
+
 <script>
-/* ─── DATA ─── */
+/* ══════════════════════════════════════════
+   DATA — 카테고리 / 세부유형 / 폼 / 프롬프트 템플릿
+══════════════════════════════════════════ */
 const CATS = [
+  /* ── 글쓰기 ── */
   {
     id:'writing', emoji:'✍️', name:'글쓰기', desc:'콘텐츠·카피·이메일',
     cc:'var(--c1)', ccl:'var(--c1l)', ccr:'255,107,157',
     subs:[
-      {e:'📝', n:'블로그·아티클', d:'정보성·롱폼 콘텐츠', form:[
-        {id:'topic', l:'글 주제', em:'💡', t:'text', ph:'예: 30대를 위한 재테크 입문, AI 트렌드 2025', req:true},
-        {id:'audience', l:'독자 대상', em:'👥', t:'sel', opts:['일반 대중','20-30대 직장인','학생·청소년','전문가·업계인','기업 고객']},
-        {id:'tone', l:'글 톤', em:'🎭', t:'sel', opts:['친근하고 캐주얼','전문적·신뢰감','유머러스·재밌게','감성적·따뜻하게','설득력 있게']},
-        {id:'len', l:'분량', em:'📏', t:'sel', opts:['짧게 (300자 이내)','보통 (500~800자)','길게 (1000자+)','제한 없음']},
-        {id:'kw', l:'핵심 키워드', em:'🔑', t:'text', ph:'예: 절약, 투자, 파이어족 (쉼표로 구분)'},
-        {id:'ex', l:'추가 요청', em:'📎', t:'ta', ph:'특별히 원하는 표현, 피할 내용, 구조 요청 등', rows:2},
-      ]},
-      {e:'📣', n:'SNS 카피', d:'인스타·X·링크드인', form:[
-        {id:'platform', l:'플랫폼', em:'📱', t:'sel', opts:['인스타그램','X (트위터)','링크드인','페이스북','스레드','유튜브 쇼츠']},
-        {id:'topic', l:'주제·상황', em:'💡', t:'text', ph:'예: 신제품 출시, 브랜드 스토리, 이벤트 홍보', req:true},
-        {id:'tone', l:'분위기', em:'🎨', t:'sel', opts:['트렌디·MZ 감성','고급스럽고 세련된','따뜻하고 감성적','유머·밈 스타일','정보·교육형']},
-        {id:'cta', l:'유도 행동 (CTA)', em:'👆', t:'text', ph:'예: 댓글 달기, 링크 클릭, 공유하기, 팔로우'},
-        {id:'hashtag', l:'해시태그 방향', em:'#️⃣', t:'text', ph:'예: 뷰티, 라이프스타일, 자기계발 관련'},
-        {id:'ex', l:'추가 요청', em:'📎', t:'ta', ph:'이모지 사용 여부, 특별 스타일, 참고 계정 등', rows:2},
-      ]},
-      {e:'📧', n:'이메일·제안서', d:'비즈니스 커뮤니케이션', form:[
-        {id:'type', l:'문서 종류', em:'📄', t:'sel', opts:['비즈니스 이메일','제안서','뉴스레터','영업 메일','감사·사과 메일','협업 요청']},
-        {id:'from', l:'보내는 사람 역할', em:'👤', t:'text', ph:'예: 스타트업 대표, 마케팅 팀장, 영업 담당자', req:true},
-        {id:'to', l:'받는 사람', em:'👥', t:'text', ph:'예: 투자자, 잠재 고객사, 파트너 기업'},
-        {id:'goal', l:'핵심 목적', em:'🎯', t:'text', ph:'예: 미팅 제안, 제품 소개, 협업 요청'},
-        {id:'tone', l:'톤', em:'🎭', t:'sel', opts:['정중하고 공식적','친근하고 직접적','설득력 있게','간결하고 명확하게']},
-        {id:'ex', l:'추가 요청', em:'📎', t:'ta', ph:'포함할 핵심 내용, 분량, 특별 강조점 등', rows:2},
-      ]},
-      {e:'📰', n:'보도자료·공지', d:'PR·공식 발표', form:[
-        {id:'what', l:'발표 내용', em:'📢', t:'text', ph:'예: 신제품 출시, 투자 유치, 서비스 업데이트', req:true},
-        {id:'who', l:'발표 주체', em:'🏢', t:'text', ph:'예: 스타트업 A, OO협회, OO기업'},
-        {id:'date', l:'발표 시점·배경', em:'📅', t:'text', ph:'예: 창립 5주년, 2025년 1분기'},
-        {id:'audience', l:'주요 독자', em:'👥', t:'sel', opts:['언론·기자','투자자','일반 소비자','기업 고객','파트너사']},
-        {id:'ex', l:'추가 요청', em:'📎', t:'ta', ph:'인용구, 통계, 강조 포인트, 특별 포함 내용 등', rows:2},
-      ]},
-      {e:'📖', n:'스토리텔링·소개', d:'브랜드·개인 스토리', form:[
-        {id:'subject', l:'스토리 주인공', em:'🌟', t:'text', ph:'예: 우리 브랜드, 창업자, 제품, 캐릭터', req:true},
-        {id:'theme', l:'핵심 주제·메시지', em:'💬', t:'text', ph:'예: 어려움 극복, 혁신의 시작, 고객과의 신뢰'},
-        {id:'emotion', l:'전달할 감정', em:'💛', t:'sel', opts:['감동·공감','희망·용기','재미·유쾌','신뢰·안정','영감·동기부여']},
-        {id:'len', l:'길이', em:'📏', t:'sel', opts:['짧게 (소개글 수준)','중간 (블로그 포스트)','길게 (브랜드 스토리)']},
-        {id:'ex', l:'추가 요청', em:'📎', t:'ta', ph:'특별한 에피소드, 분위기, 구성 방식 등', rows:2},
-      ]},
+      { e:'📝', n:'블로그·아티클', d:'정보성·롱폼 콘텐츠',
+        form:[
+          {id:'topic',  l:'글 주제',    em:'💡', t:'text', ph:'예: 30대를 위한 재테크 입문, AI 트렌드 2025', req:true},
+          {id:'audience',l:'독자 대상', em:'👥', t:'sel',  opts:['일반 대중','20-30대 직장인','학생·청소년','전문가·업계인','기업 고객']},
+          {id:'tone',   l:'글 톤',      em:'🎭', t:'sel',  opts:['친근하고 캐주얼','전문적·신뢰감','유머러스·재밌게','감성적·따뜻하게','설득력 있게']},
+          {id:'len',    l:'분량',       em:'📏', t:'sel',  opts:['짧게 (300자 이내)','보통 (500~800자)','길게 (1000자+)','제한 없음']},
+          {id:'kw',     l:'핵심 키워드',em:'🔑', t:'text', ph:'예: 절약, 투자, 파이어족'},
+          {id:'ex',     l:'추가 요청',  em:'📎', t:'ta',   ph:'원하는 구조, 피할 표현, 참고 자료 등', rows:2},
+        ],
+        tpl:(v)=>`당신은 전문 콘텐츠 라이터입니다.
+
+다음 조건에 맞는 블로그 아티클을 작성해주세요.
+
+• 주제: ${v.topic||'(주제를 입력해주세요)'}
+• 대상 독자: ${v.audience||'일반 대중'}
+• 톤 & 매너: ${v.tone||'친근하고 캐주얼'}
+• 분량: ${v.len||'보통 (500~800자)'}${v.kw?`\n• 반드시 포함할 키워드: ${v.kw}`:''}
+
+작성 방식:
+1. 독자의 관심을 즉시 끄는 도입부로 시작하세요.
+2. 핵심 내용을 소제목과 함께 구조적으로 전개하세요.
+3. 구체적인 예시나 수치를 활용해 신뢰도를 높이세요.
+4. 행동을 유도하는 결론으로 마무리하세요.
+${v.ex?`\n추가 요청: ${v.ex}`:''}
+
+위 조건을 모두 반영해 완성도 높은 아티클을 작성해주세요.`
+      },
+      { e:'📣', n:'SNS 카피', d:'인스타·X·링크드인',
+        form:[
+          {id:'platform',l:'플랫폼',     em:'📱', t:'sel',  opts:['인스타그램','X (트위터)','링크드인','페이스북','스레드'], req:true},
+          {id:'topic',   l:'주제·상황',  em:'💡', t:'text', ph:'예: 신제품 출시, 브랜드 스토리, 이벤트 홍보', req:true},
+          {id:'tone',    l:'분위기',     em:'🎨', t:'sel',  opts:['트렌디·MZ 감성','고급스럽고 세련된','따뜻하고 감성적','유머·밈 스타일','정보·교육형']},
+          {id:'cta',     l:'유도 행동',  em:'👆', t:'text', ph:'예: 댓글 달기, 링크 클릭, 공유하기'},
+          {id:'hashtag', l:'해시태그 방향',em:'#️⃣',t:'text',ph:'예: 뷰티, 라이프스타일, 자기계발'},
+          {id:'ex',      l:'추가 요청',  em:'📎', t:'ta',   ph:'이모지 사용 여부, 특별 스타일, 분량 등', rows:2},
+        ],
+        tpl:(v)=>`당신은 SNS 마케팅 전문 카피라이터입니다.
+
+다음 조건으로 ${v.platform||'SNS'} 게시물 카피를 작성해주세요.
+
+• 주제·상황: ${v.topic||'(주제를 입력해주세요)'}
+• 분위기: ${v.tone||'트렌디·MZ 감성'}${v.cta?`\n• 유도 행동 (CTA): ${v.cta}`:''}${v.hashtag?`\n• 해시태그 방향: ${v.hashtag}`:''}
+
+작성 규칙:
+1. 첫 줄에서 스크롤을 멈추게 만드는 문장으로 시작하세요.
+2. ${v.platform||'SNS'} 플랫폼의 특성과 알고리즘을 고려하세요.
+3. 자연스럽게 행동을 유도하는 CTA를 포함하세요.
+4. 관련 해시태그를 적절히 배치하세요.
+${v.ex?`\n추가 요청: ${v.ex}`:''}
+
+3가지 버전으로 작성해 선택할 수 있도록 해주세요.`
+      },
+      { e:'📧', n:'이메일·제안서', d:'비즈니스 커뮤니케이션',
+        form:[
+          {id:'type',   l:'문서 종류',      em:'📄', t:'sel',  opts:['비즈니스 이메일','제안서','뉴스레터','영업 메일','감사·사과 메일','협업 요청']},
+          {id:'from',   l:'보내는 사람',    em:'👤', t:'text', ph:'예: 스타트업 대표, 마케팅 팀장', req:true},
+          {id:'to',     l:'받는 사람',      em:'👥', t:'text', ph:'예: 투자자, 잠재 고객사, 파트너 기업'},
+          {id:'goal',   l:'핵심 목적',      em:'🎯', t:'text', ph:'예: 미팅 제안, 제품 소개, 협업 요청'},
+          {id:'tone',   l:'톤',             em:'🎭', t:'sel',  opts:['정중하고 공식적','친근하고 직접적','설득력 있게','간결하고 명확하게']},
+          {id:'ex',     l:'포함할 내용',    em:'📎', t:'ta',   ph:'핵심 메시지, 제안 조건, 특별 강조점 등', rows:2},
+        ],
+        tpl:(v)=>`당신은 비즈니스 커뮤니케이션 전문가입니다.
+
+다음 조건으로 ${v.type||'비즈니스 이메일'}을 작성해주세요.
+
+• 발신자: ${v.from||'(발신자 정보를 입력해주세요)'}
+• 수신자: ${v.to||'(수신자 정보를 입력해주세요)'}
+• 목적: ${v.goal||'(목적을 입력해주세요)'}
+• 톤: ${v.tone||'정중하고 공식적'}
+
+작성 원칙:
+1. 명확하고 간결한 제목(Subject)을 먼저 제안하세요.
+2. 본론을 빠르게 전달하되, 상대방의 이익 관점에서 서술하세요.
+3. 구체적인 다음 액션(Next Step)을 제시하세요.
+4. 전문적이면서도 인간적인 마무리로 끝내세요.
+${v.ex?`\n포함할 내용: ${v.ex}`:''}
+
+Subject 포함 전체 이메일을 완성해주세요.`
+      },
+      { e:'📰', n:'보도자료·공지', d:'PR·공식 발표',
+        form:[
+          {id:'what',    l:'발표 내용',  em:'📢', t:'text', ph:'예: 신제품 출시, 투자 유치, 서비스 업데이트', req:true},
+          {id:'who',     l:'발표 주체', em:'🏢', t:'text', ph:'예: 스타트업 A, OO협회'},
+          {id:'date',    l:'발표 시점', em:'📅', t:'text', ph:'예: 창립 5주년, 2025년 1분기'},
+          {id:'audience',l:'주요 독자', em:'👥', t:'sel',  opts:['언론·기자','투자자','일반 소비자','기업 고객','파트너사']},
+          {id:'ex',      l:'포함할 내용',em:'📎',t:'ta',   ph:'인용구, 통계, 특별 포함 내용 등', rows:2},
+        ],
+        tpl:(v)=>`당신은 PR 전문가이자 보도자료 작성 전문가입니다.
+
+다음 정보를 바탕으로 언론 배포용 보도자료를 작성해주세요.
+
+• 발표 내용: ${v.what||'(발표 내용을 입력해주세요)'}
+• 발표 주체: ${v.who||'(기관·회사명을 입력해주세요)'}${v.date?`\n• 발표 시점·배경: ${v.date}`:''}
+• 주요 독자: ${v.audience||'언론·기자'}
+
+보도자료 구성:
+1. 핵심을 담은 헤드라인 (1줄)
+2. 요약 리드 문단 (5W1H 포함, 3~4문장)
+3. 본문 (배경, 상세 내용, 의의)
+4. 담당자 인용구
+5. 회사 소개 (Boilerplate)
+6. 문의처
+${v.ex?`\n포함할 내용: ${v.ex}`:''}
+
+전문적인 보도자료 형식으로 완성해주세요.`
+      },
+      { e:'📖', n:'스토리텔링·소개', d:'브랜드·개인 스토리',
+        form:[
+          {id:'subject', l:'스토리 주인공',em:'🌟',t:'text', ph:'예: 우리 브랜드, 창업자, 제품', req:true},
+          {id:'theme',   l:'핵심 메시지', em:'💬',t:'text', ph:'예: 어려움 극복, 혁신의 시작, 고객과의 신뢰'},
+          {id:'emotion', l:'전달할 감정', em:'💛',t:'sel',  opts:['감동·공감','희망·용기','재미·유쾌','신뢰·안정','영감·동기부여']},
+          {id:'len',     l:'길이',        em:'📏',t:'sel',  opts:['짧게 (소개글)','중간 (블로그)','길게 (브랜드 스토리)']},
+          {id:'ex',      l:'추가 요청',   em:'📎',t:'ta',   ph:'특별한 에피소드, 분위기, 구성 방식 등', rows:2},
+        ],
+        tpl:(v)=>`당신은 브랜드 스토리텔러이자 카피라이터입니다.
+
+다음 조건으로 감동적인 스토리를 작성해주세요.
+
+• 주인공: ${v.subject||'(주인공을 입력해주세요)'}${v.theme?`\n• 핵심 메시지: ${v.theme}`:''}
+• 전달할 감정: ${v.emotion||'감동·공감'}
+• 길이: ${v.len||'중간 (블로그)'}
+
+스토리 구성:
+1. 독자의 공감을 끌어내는 도입 (문제 또는 상황 제시)
+2. 여정과 갈등 (도전, 시행착오, 전환점)
+3. 변화와 해결 (어떻게 극복했는가)
+4. 독자에게 전하는 메시지
+${v.ex?`\n추가 요청: ${v.ex}`:''}
+
+진정성 있고 기억에 남는 스토리로 완성해주세요.`
+      },
     ]
   },
+
+  /* ── 분석·리서치 ── */
   {
     id:'analyze', emoji:'📊', name:'분석·리서치', desc:'데이터·시장·비교 분석',
     cc:'var(--c3)', ccl:'var(--c3l)', ccr:'6,182,212',
     subs:[
-      {e:'📈', n:'시장·트렌드 분석', d:'업계·시장 파악', form:[
-        {id:'market', l:'분석할 시장', em:'🌐', t:'text', ph:'예: 한국 구독 서비스, 글로벌 AI 시장', req:true},
-        {id:'purpose', l:'분석 목적', em:'🎯', t:'sel', opts:['투자·검토','사업 기획','경영진 보고','학술·연구','개인 학습']},
-        {id:'depth', l:'분석 깊이', em:'🔬', t:'sel', opts:['요약·개요','중간 수준 (2~3페이지)','심층 분석 (5페이지+)']},
-        {id:'focus', l:'특히 볼 포인트', em:'🔍', t:'text', ph:'예: 경쟁 구도, 성장률, 소비자 행동 변화'},
-        {id:'ex', l:'추가 요청', em:'📎', t:'ta', ph:'원하는 프레임워크, 포함할 데이터, 참고 자료 등', rows:2},
-      ]},
-      {e:'🏢', n:'경쟁사 분석', d:'벤치마킹·비교', form:[
-        {id:'mine', l:'내 제품·서비스', em:'🏠', t:'text', ph:'예: 구독형 식단 관리 앱', req:true},
-        {id:'comp', l:'비교할 경쟁사', em:'🔭', t:'text', ph:'예: 마켓컬리, 쿠팡이츠, 특정 앱 이름'},
-        {id:'angle', l:'분석 관점', em:'👁️', t:'sel', opts:['가격·플랜 비교','UX·기능 비교','마케팅 전략','고객 리뷰 분석','전체 종합']},
-        {id:'goal', l:'분석 목표', em:'🎯', t:'text', ph:'예: 차별화 포인트 발굴, 약점 보완, 전략 수립'},
-        {id:'ex', l:'추가 요청', em:'📎', t:'ta', ph:'특별히 집중할 항목, 원하는 표 형식 등', rows:2},
-      ]},
-      {e:'💰', n:'재무·비용 분석', d:'수익성·비용 검토', form:[
-        {id:'subject', l:'분석 대상', em:'📋', t:'text', ph:'예: 사업 초기 비용, 마케팅 ROI, 단위 경제성', req:true},
-        {id:'period', l:'기간', em:'📅', t:'sel', opts:['월간','분기','연간','3~5년 장기']},
-        {id:'goal', l:'분석 목적', em:'🎯', t:'sel', opts:['손익분기점 산출','투자 타당성 검토','예산 최적화','보고서 작성']},
-        {id:'data', l:'보유 데이터', em:'📊', t:'ta', ph:'매출, 비용 항목, 수치 등 알고 있는 정보를 적어주세요', rows:2},
-        {id:'ex', l:'추가 요청', em:'📎', t:'text', ph:'원하는 계산 방식, 시각화 요청 등'},
-      ]},
-      {e:'📋', n:'SWOT·전략 분석', d:'강약점·기회·위협', form:[
-        {id:'subject', l:'분석 대상', em:'🏢', t:'text', ph:'예: 내 스타트업, 신규 서비스, 특정 기업', req:true},
-        {id:'context', l:'현재 상황', em:'📍', t:'ta', ph:'간단한 배경: 업종, 규모, 단계, 주요 이슈 등', rows:2},
-        {id:'goal', l:'전략 목표', em:'🎯', t:'text', ph:'예: 시장 점유율 확대, 비용 절감, 브랜드 강화'},
-        {id:'frame', l:'원하는 프레임워크', em:'🔧', t:'sel', opts:['SWOT','PEST','포터의 5 Forces','SWOT + 전략 도출','전체 종합']},
-        {id:'ex', l:'추가 요청', em:'📎', t:'text', ph:'특별히 강조할 관점, 포함할 데이터 등'},
-      ]},
-      {e:'🔍', n:'자료 요약·정리', d:'논문·리포트·기사', form:[
-        {id:'type', l:'자료 종류', em:'📄', t:'sel', opts:['논문·학술 자료','뉴스·기사','보고서·리포트','책·도서','회의록·메모']},
-        {id:'goal', l:'요약 목적', em:'🎯', t:'sel', opts:['핵심 파악','발표 준비','보고서 작성','학습·공부','팀 공유']},
-        {id:'depth', l:'요약 깊이', em:'📊', t:'sel', opts:['한 줄 요약','3~5줄 핵심','구조화된 요약 (항목별)','상세 요약 + 인사이트']},
-        {id:'format', l:'출력 형식', em:'📐', t:'sel', opts:['자유 서술','글머리 기호 목록','표 형식','Q&A 형식']},
-        {id:'ex', l:'추가 요청', em:'📎', t:'ta', ph:'특히 중요하게 볼 섹션, 제외할 내용, 강조 포인트 등', rows:2},
-      ]},
+      { e:'📈', n:'시장·트렌드 분석', d:'업계·시장 파악',
+        form:[
+          {id:'market',  l:'분석할 시장', em:'🌐',t:'text',ph:'예: 한국 구독 서비스, 글로벌 AI 시장', req:true},
+          {id:'purpose', l:'분석 목적',   em:'🎯',t:'sel', opts:['투자·검토','사업 기획','경영진 보고','학술·연구','개인 학습']},
+          {id:'depth',   l:'분석 깊이',   em:'🔬',t:'sel', opts:['요약·개요','중간 수준','심층 분석']},
+          {id:'focus',   l:'집중할 포인트',em:'🔍',t:'text',ph:'예: 경쟁 구도, 성장률, 소비자 행동'},
+          {id:'ex',      l:'추가 요청',   em:'📎',t:'ta',  ph:'원하는 프레임워크, 포함할 데이터 등', rows:2},
+        ],
+        tpl:(v)=>`당신은 시장 조사 및 비즈니스 전략 전문가입니다.
+
+다음 조건으로 시장·트렌드 분석 보고서를 작성해주세요.
+
+• 분석 대상: ${v.market||'(시장을 입력해주세요)'}
+• 분석 목적: ${v.purpose||'사업 기획'}
+• 분석 깊이: ${v.depth||'중간 수준'}${v.focus?`\n• 집중할 포인트: ${v.focus}`:''}
+
+분석 구성:
+1. 시장 개요 및 규모 (현재 & 전망)
+2. 핵심 트렌드 (3~5가지)
+3. 주요 플레이어 및 경쟁 구도
+4. 기회 요인 & 위협 요인
+5. 전략적 시사점 및 제언
+${v.ex?`\n추가 요청: ${v.ex}`:''}
+
+데이터와 근거를 바탕으로 객관적이고 실용적인 분석을 제공해주세요.`
+      },
+      { e:'🏢', n:'경쟁사 분석', d:'벤치마킹·비교',
+        form:[
+          {id:'mine',  l:'내 제품·서비스', em:'🏠',t:'text',ph:'예: 구독형 식단 관리 앱', req:true},
+          {id:'comp',  l:'비교할 경쟁사',  em:'🔭',t:'text',ph:'예: 마켓컬리, 쿠팡이츠'},
+          {id:'angle', l:'분석 관점',      em:'👁️',t:'sel', opts:['가격·플랜 비교','UX·기능 비교','마케팅 전략','고객 리뷰 분석','전체 종합']},
+          {id:'goal',  l:'분석 목표',      em:'🎯',t:'text',ph:'예: 차별화 포인트 발굴, 전략 수립'},
+          {id:'ex',    l:'추가 요청',      em:'📎',t:'ta',  ph:'특별히 집중할 항목, 원하는 표 형식 등', rows:2},
+        ],
+        tpl:(v)=>`당신은 경쟁 전략 및 시장 분석 전문가입니다.
+
+다음 조건으로 경쟁사 분석을 수행해주세요.
+
+• 분석 대상 (우리): ${v.mine||'(내 제품을 입력해주세요)'}
+• 비교 경쟁사: ${v.comp||'(경쟁사를 입력해주세요)'}
+• 분석 관점: ${v.angle||'전체 종합'}${v.goal?`\n• 분석 목표: ${v.goal}`:''}
+
+분석 구성:
+1. 비교 대상 개요 (각사 포지셔닝)
+2. 항목별 비교표 (기능, 가격, UX, 마케팅)
+3. 우리의 강점 & 약점
+4. 경쟁사의 강점 & 약점
+5. 차별화 전략 제언
+${v.ex?`\n추가 요청: ${v.ex}`:''}
+
+실행 가능한 인사이트와 전략적 제언을 포함해주세요.`
+      },
+      { e:'💰', n:'재무·비용 분석', d:'수익성·비용 검토',
+        form:[
+          {id:'subject',l:'분석 대상',  em:'📋',t:'text',ph:'예: 사업 초기 비용, 마케팅 ROI', req:true},
+          {id:'period', l:'기간',       em:'📅',t:'sel', opts:['월간','분기','연간','3~5년 장기']},
+          {id:'goal',   l:'분석 목적', em:'🎯',t:'sel', opts:['손익분기점 산출','투자 타당성 검토','예산 최적화','보고서 작성']},
+          {id:'data',   l:'보유 데이터',em:'📊',t:'ta',  ph:'매출, 비용 항목, 수치 등 알고 있는 정보', rows:2},
+          {id:'ex',     l:'추가 요청', em:'📎',t:'text',ph:'원하는 계산 방식, 시각화 요청 등'},
+        ],
+        tpl:(v)=>`당신은 재무 분석 및 비즈니스 모델링 전문가입니다.
+
+다음 조건으로 재무·비용 분석을 수행해주세요.
+
+• 분석 대상: ${v.subject||'(분석 대상을 입력해주세요)'}
+• 기간: ${v.period||'연간'}
+• 목적: ${v.goal||'손익분기점 산출'}
+${v.data?`• 보유 데이터:\n${v.data}`:''}
+
+분석 항목:
+1. 비용 구조 분류 (고정비 / 변동비)
+2. 수익 시나리오 분석 (낙관·보통·비관)
+3. 손익분기점 (BEP) 산출
+4. 주요 재무 지표 (ROI, 마진율 등)
+5. 개선 포인트 및 제언
+${v.ex?`\n추가 요청: ${v.ex}`:''}
+
+구체적인 수치와 계산 근거를 포함해 분석해주세요.`
+      },
+      { e:'📋', n:'SWOT·전략 분석', d:'강약점·기회·위협',
+        form:[
+          {id:'subject', l:'분석 대상',  em:'🏢',t:'text',ph:'예: 내 스타트업, 신규 서비스', req:true},
+          {id:'context', l:'현재 상황',  em:'📍',t:'ta',  ph:'업종, 규모, 단계, 주요 이슈 등', rows:2},
+          {id:'goal',    l:'전략 목표', em:'🎯',t:'text',ph:'예: 시장 점유율 확대, 비용 절감'},
+          {id:'frame',   l:'프레임워크',em:'🔧',t:'sel', opts:['SWOT','PEST','포터의 5 Forces','SWOT + 전략 도출','전체 종합']},
+          {id:'ex',      l:'추가 요청', em:'📎',t:'text',ph:'특별히 강조할 관점, 포함할 데이터 등'},
+        ],
+        tpl:(v)=>`당신은 경영 전략 컨설턴트입니다.
+
+다음 조건으로 ${v.frame||'SWOT'} 분석을 수행해주세요.
+
+• 분석 대상: ${v.subject||'(분석 대상을 입력해주세요)'}
+${v.context?`• 현재 상황: ${v.context}`:''}${v.goal?`\n• 전략 목표: ${v.goal}`:''}
+
+분석 구성:
+1. ${v.frame||'SWOT'} 분석 매트릭스 (표 형식)
+2. 각 요인별 구체적 설명 (2~3가지씩)
+3. SO·ST·WO·WT 전략 도출
+4. 우선순위 전략 제언 (Top 3)
+5. 실행 로드맵 (단기·중기·장기)
+${v.ex?`\n추가 요청: ${v.ex}`:''}
+
+실행 가능한 전략과 구체적 액션 아이템을 포함해주세요.`
+      },
+      { e:'🔍', n:'자료 요약·정리', d:'논문·리포트·기사',
+        form:[
+          {id:'type',   l:'자료 종류',  em:'📄',t:'sel', opts:['논문·학술 자료','뉴스·기사','보고서·리포트','책·도서','회의록·메모']},
+          {id:'goal',   l:'요약 목적', em:'🎯',t:'sel', opts:['핵심 파악','발표 준비','보고서 작성','학습·공부','팀 공유']},
+          {id:'depth',  l:'요약 깊이', em:'📊',t:'sel', opts:['한 줄 요약','3~5줄 핵심','구조화된 요약','상세 요약 + 인사이트']},
+          {id:'format', l:'출력 형식', em:'📐',t:'sel', opts:['자유 서술','글머리 기호 목록','표 형식','Q&A 형식']},
+          {id:'ex',     l:'추가 요청', em:'📎',t:'ta',  ph:'특히 중요하게 볼 섹션, 제외할 내용 등', rows:2},
+        ],
+        tpl:(v)=>`당신은 전문 리서처이자 정보 분석가입니다.
+
+아래 지침에 따라 제공되는 ${v.type||'자료'}를 요약·정리해주세요.
+
+• 요약 목적: ${v.goal||'핵심 파악'}
+• 요약 깊이: ${v.depth||'구조화된 요약'}
+• 출력 형식: ${v.format||'글머리 기호 목록'}
+
+요약 구성:
+1. 핵심 요약 (3문장 이내)
+2. 주요 내용 (${v.format||'글머리 기호'} 형식)
+3. 핵심 데이터·수치
+4. 시사점 & 인사이트
+5. 추가 조사가 필요한 사항
+${v.ex?`\n추가 요청: ${v.ex}`:''}
+
+객관적이고 정확하게, 원문의 핵심을 빠짐없이 요약해주세요.`
+      },
     ]
   },
+
+  /* ── 코드 작성 ── */
   {
     id:'code', emoji:'💻', name:'코드 작성', desc:'개발·자동화·스크립트',
     cc:'var(--c5)', ccl:'var(--c5l)', ccr:'16,185,129',
     subs:[
-      {e:'🌐', n:'웹 개발', d:'프론트엔드·백엔드', form:[
-        {id:'what', l:'만들 것', em:'🎯', t:'text', ph:'예: 랜딩 페이지, 사용자 대시보드, 로그인 시스템', req:true},
-        {id:'stack', l:'기술 스택', em:'🛠️', t:'sel', opts:['HTML+CSS+JS (바닐라)','React / Next.js','Vue.js','Svelte','Node.js (백엔드)','Python (Flask/Django)','기타']},
-        {id:'level', l:'코드 수준', em:'📊', t:'sel', opts:['입문자 (주석 상세히)','중급자','고급자 (최적화 중심)','프로덕션 수준']},
-        {id:'feature', l:'필요 기능', em:'⭐', t:'text', ph:'예: 반응형, 다크모드, API 연동, 인증'},
-        {id:'ex', l:'추가 요청', em:'📎', t:'ta', ph:'현재 코드 상황, 오류 메시지, 특별 조건 등', rows:2},
-      ]},
-      {e:'📱', n:'앱 개발', d:'모바일·크로스플랫폼', form:[
-        {id:'what', l:'만들 앱', em:'🎯', t:'text', ph:'예: 운동 기록 앱, 가계부, 커뮤니티 SNS', req:true},
-        {id:'platform', l:'플랫폼·기술', em:'📱', t:'sel', opts:['React Native','Flutter','Swift (iOS)','Kotlin (Android)','PWA (웹앱)','Expo']},
-        {id:'screen', l:'주요 화면', em:'🖥️', t:'text', ph:'예: 홈, 로그인, 프로필, 설정, 상세 페이지'},
-        {id:'feature', l:'핵심 기능', em:'⭐', t:'text', ph:'예: 푸시 알림, 카메라, 위치, 소셜 로그인'},
-        {id:'ex', l:'추가 요청', em:'📎', t:'ta', ph:'디자인 방향, 백엔드 연동, 특별 조건 등', rows:2},
-      ]},
-      {e:'🤖', n:'자동화·스크립트', d:'반복 작업 자동화', form:[
-        {id:'task', l:'자동화할 작업', em:'🎯', t:'text', ph:'예: 엑셀 데이터 정리, 웹 크롤링, 파일 정렬', req:true},
-        {id:'lang', l:'언어', em:'🛠️', t:'sel', opts:['Python','JavaScript / Node.js','Bash / Shell','Google Apps Script','Power Automate','기타']},
-        {id:'trigger', l:'실행 트리거', em:'⚡', t:'sel', opts:['수동 실행','스케줄 (매일·매주)','파일 변경 감지','API 웹훅','이메일 수신']},
-        {id:'input', l:'입력 데이터', em:'📥', t:'text', ph:'예: CSV 파일, 웹사이트 URL, 폴더 경로'},
-        {id:'ex', l:'추가 요청', em:'📎', t:'ta', ph:'에러 처리, 로그 저장, 알림 설정 등', rows:2},
-      ]},
-      {e:'🗄️', n:'데이터베이스·API', d:'DB 설계·REST API', form:[
-        {id:'what', l:'만들 것', em:'🎯', t:'text', ph:'예: 사용자 관리 API, 상품 DB 스키마, 검색 엔진', req:true},
-        {id:'tech', l:'기술', em:'🛠️', t:'sel', opts:['PostgreSQL','MySQL','MongoDB','SQLite','REST API (Express)','REST API (FastAPI)','GraphQL']},
-        {id:'entities', l:'주요 데이터 항목', em:'📋', t:'text', ph:'예: 사용자, 상품, 주문, 리뷰, 카테고리'},
-        {id:'feature', l:'필요 기능', em:'⭐', t:'text', ph:'예: 인증, 페이지네이션, 검색, 필터'},
-        {id:'ex', l:'추가 요청', em:'📎', t:'ta', ph:'성능 요구, 보안 조건, 코드 품질 수준 등', rows:2},
-      ]},
-      {e:'🧩', n:'알고리즘·로직', d:'문제 풀이·최적화', form:[
-        {id:'problem', l:'해결할 문제', em:'🎯', t:'text', ph:'예: 최단 경로 탐색, 중복 제거, 정렬 알고리즘', req:true},
-        {id:'lang', l:'언어', em:'🛠️', t:'sel', opts:['Python','JavaScript','Java','C++','Go','언어 무관']},
-        {id:'constraint', l:'조건·제약', em:'⚡', t:'text', ph:'예: 시간복잡도 O(n), 메모리 제한 256MB'},
-        {id:'level', l:'수준', em:'📊', t:'sel', opts:['기초 개념 설명 포함','중급 (설명 최소화)','고급 (최적화 중심)','코딩 테스트 대비']},
-        {id:'ex', l:'추가 요청', em:'📎', t:'ta', ph:'테스트 케이스, 엣지 케이스, 특별 요구사항 등', rows:2},
-      ]},
+      { e:'🌐', n:'웹 개발', d:'프론트엔드·백엔드',
+        form:[
+          {id:'what',   l:'만들 것',    em:'🎯',t:'text',ph:'예: 랜딩 페이지, 사용자 대시보드', req:true},
+          {id:'stack',  l:'기술 스택', em:'🛠️',t:'sel', opts:['HTML+CSS+JS (바닐라)','React / Next.js','Vue.js','Svelte','Node.js','Python (Flask/Django)','기타']},
+          {id:'level',  l:'코드 수준', em:'📊',t:'sel', opts:['입문자 (주석 상세히)','중급자','고급자 (최적화)','프로덕션 수준']},
+          {id:'feature',l:'필요 기능', em:'⭐',t:'text',ph:'예: 반응형, 다크모드, API 연동, 인증'},
+          {id:'ex',     l:'추가 요청', em:'📎',t:'ta',  ph:'현재 코드 상황, 오류 메시지, 특별 조건 등', rows:2},
+        ],
+        tpl:(v)=>`당신은 시니어 웹 개발자입니다.
+
+다음 요구사항에 맞는 코드를 작성해주세요.
+
+• 만들 것: ${v.what||'(구현할 내용을 입력해주세요)'}
+• 기술 스택: ${v.stack||'HTML+CSS+JS'}
+• 코드 수준: ${v.level||'중급자'}${v.feature?`\n• 필요 기능: ${v.feature}`:''}
+
+개발 원칙:
+1. 클린 코드 원칙을 준수하세요.
+2. 재사용 가능한 컴포넌트 구조로 설계하세요.
+3. ${v.level==='입문자 (주석 상세히)'?'각 코드 블록에 한국어 주석을 상세히 작성하세요.':'에러 처리와 엣지 케이스를 고려하세요.'}
+4. 완성된 코드와 함께 실행 방법을 설명해주세요.
+${v.ex?`\n추가 요청: ${v.ex}`:''}
+
+바로 실행 가능한 완성 코드를 제공해주세요.`
+      },
+      { e:'📱', n:'앱 개발', d:'모바일·크로스플랫폼',
+        form:[
+          {id:'what',    l:'만들 앱',   em:'🎯',t:'text',ph:'예: 운동 기록 앱, 가계부, SNS', req:true},
+          {id:'platform',l:'플랫폼',    em:'📱',t:'sel', opts:['React Native','Flutter','Swift (iOS)','Kotlin (Android)','PWA','Expo']},
+          {id:'screen',  l:'주요 화면', em:'🖥️',t:'text',ph:'예: 홈, 로그인, 프로필, 설정'},
+          {id:'feature', l:'핵심 기능', em:'⭐',t:'text',ph:'예: 푸시 알림, 카메라, 위치, 소셜 로그인'},
+          {id:'ex',      l:'추가 요청', em:'📎',t:'ta',  ph:'디자인 방향, 백엔드 연동, 특별 조건 등', rows:2},
+        ],
+        tpl:(v)=>`당신은 모바일 앱 개발 전문가입니다.
+
+다음 요구사항에 맞는 ${v.platform||'앱'} 코드를 작성해주세요.
+
+• 앱 개요: ${v.what||'(앱을 설명해주세요)'}
+• 플랫폼: ${v.platform||'React Native'}${v.screen?`\n• 주요 화면: ${v.screen}`:''}${v.feature?`\n• 핵심 기능: ${v.feature}`:''}
+
+구현 방식:
+1. 폴더 구조와 파일 설계를 먼저 제안해주세요.
+2. 각 화면의 핵심 컴포넌트를 구현해주세요.
+3. 상태 관리와 네비게이션을 포함해주세요.
+4. 실행 환경 설정 방법도 함께 안내해주세요.
+${v.ex?`\n추가 요청: ${v.ex}`:''}
+
+단계별로 설명하며 완성 코드를 제공해주세요.`
+      },
+      { e:'🤖', n:'자동화·스크립트', d:'반복 작업 자동화',
+        form:[
+          {id:'task',   l:'자동화할 작업',em:'🎯',t:'text',ph:'예: 엑셀 정리, 웹 크롤링, 파일 정렬', req:true},
+          {id:'lang',   l:'언어',         em:'🛠️',t:'sel', opts:['Python','JavaScript / Node.js','Bash / Shell','Google Apps Script','기타']},
+          {id:'trigger',l:'실행 트리거',  em:'⚡',t:'sel', opts:['수동 실행','스케줄 (매일·매주)','파일 변경 감지','API 웹훅']},
+          {id:'input',  l:'입력 데이터', em:'📥',t:'text',ph:'예: CSV 파일, 웹사이트 URL, 폴더 경로'},
+          {id:'ex',     l:'추가 요청',   em:'📎',t:'ta',  ph:'에러 처리, 로그 저장, 알림 설정 등', rows:2},
+        ],
+        tpl:(v)=>`당신은 자동화 스크립트 전문 개발자입니다.
+
+다음 요구사항에 맞는 자동화 스크립트를 작성해주세요.
+
+• 자동화할 작업: ${v.task||'(작업을 입력해주세요)'}
+• 언어: ${v.lang||'Python'}
+• 실행 트리거: ${v.trigger||'수동 실행'}${v.input?`\n• 입력 데이터: ${v.input}`:''}
+
+구현 요구사항:
+1. 필요한 라이브러리 설치 방법을 먼저 안내해주세요.
+2. 에러 처리와 예외 상황을 반드시 포함하세요.
+3. 실행 로그를 출력하도록 구현하세요.
+4. 코드 사용법과 주의사항을 설명해주세요.
+${v.ex?`\n추가 요청: ${v.ex}`:''}
+
+바로 실행 가능한 완성 스크립트를 제공해주세요.`
+      },
+      { e:'🗄️', n:'데이터베이스·API', d:'DB 설계·REST API',
+        form:[
+          {id:'what',    l:'만들 것',       em:'🎯',t:'text',ph:'예: 사용자 관리 API, 상품 DB 스키마', req:true},
+          {id:'tech',    l:'기술',          em:'🛠️',t:'sel', opts:['PostgreSQL','MySQL','MongoDB','SQLite','REST API (Express)','REST API (FastAPI)','GraphQL']},
+          {id:'entities',l:'주요 데이터',   em:'📋',t:'text',ph:'예: 사용자, 상품, 주문, 리뷰'},
+          {id:'feature', l:'필요 기능',     em:'⭐',t:'text',ph:'예: 인증, 페이지네이션, 검색, 필터'},
+          {id:'ex',      l:'추가 요청',     em:'📎',t:'ta',  ph:'성능 요구, 보안 조건, 코드 품질 수준 등', rows:2},
+        ],
+        tpl:(v)=>`당신은 백엔드 아키텍트이자 데이터베이스 전문가입니다.
+
+다음 요구사항에 맞는 ${v.tech||'API'} 코드를 작성해주세요.
+
+• 만들 것: ${v.what||'(구현할 내용을 입력해주세요)'}
+• 기술: ${v.tech||'REST API'}${v.entities?`\n• 주요 데이터 항목: ${v.entities}`:''}${v.feature?`\n• 필요 기능: ${v.feature}`:''}
+
+구현 순서:
+1. 데이터 모델 / 스키마 설계 (ERD 포함)
+2. API 엔드포인트 목록 (HTTP 메서드, URL, 설명)
+3. 핵심 엔드포인트 구현 코드
+4. 인증·보안 처리
+5. 테스트 방법 (curl 예시)
+${v.ex?`\n추가 요청: ${v.ex}`:''}
+
+실무에서 바로 사용 가능한 수준의 코드를 제공해주세요.`
+      },
+      { e:'🧩', n:'알고리즘·로직', d:'문제 풀이·최적화',
+        form:[
+          {id:'problem',   l:'해결할 문제',  em:'🎯',t:'text',ph:'예: 최단 경로 탐색, 중복 제거, 정렬', req:true},
+          {id:'lang',      l:'언어',         em:'🛠️',t:'sel', opts:['Python','JavaScript','Java','C++','Go','언어 무관']},
+          {id:'constraint',l:'조건·제약',    em:'⚡',t:'text',ph:'예: 시간복잡도 O(n), 메모리 제한 256MB'},
+          {id:'level',     l:'수준',         em:'📊',t:'sel', opts:['기초 개념 설명 포함','중급 (설명 최소화)','고급 (최적화 중심)','코딩 테스트 대비']},
+          {id:'ex',        l:'추가 요청',    em:'📎',t:'ta',  ph:'테스트 케이스, 엣지 케이스 등', rows:2},
+        ],
+        tpl:(v)=>`당신은 알고리즘 전문가이자 CS 튜터입니다.
+
+다음 문제를 단계별로 풀어주세요.
+
+• 문제: ${v.problem||'(문제를 입력해주세요)'}
+• 언어: ${v.lang||'언어 무관'}${v.constraint?`\n• 제약 조건: ${v.constraint}`:''}
+• 수준: ${v.level||'중급'}
+
+풀이 방식:
+1. 문제 분석 및 접근 전략 설명
+2. 핵심 아이디어 및 알고리즘 선택 근거
+3. 단계별 풀이 과정 (의사코드 → 실제 코드)
+4. 시간·공간 복잡도 분석
+5. 테스트 케이스로 검증
+${v.ex?`\n추가 요청: ${v.ex}`:''}
+
+명확한 설명과 함께 최적화된 풀이를 제공해주세요.`
+      },
     ]
   },
+
+  /* ── 이미지 생성 ── */
   {
     id:'image', emoji:'🎨', name:'이미지 생성', desc:'Midjourney·DALL-E·SD',
     cc:'var(--c4)', ccl:'var(--c4l)', ccr:'139,92,246',
     subs:[
-      {e:'📸', n:'사실적 사진', d:'포토리얼리스틱', form:[
-        {id:'subject', l:'피사체·장면', em:'🎯', t:'text', ph:'예: 도심 카페 창가의 여성, 일출 풍경, 미래 도시', req:true},
-        {id:'tool', l:'사용 도구', em:'🛠️', t:'sel', opts:['Midjourney','DALL-E 3','Stable Diffusion','Adobe Firefly','상관없음']},
-        {id:'lighting', l:'조명·분위기', em:'💡', t:'sel', opts:['자연광·일광','황금빛 골든아워','스튜디오 조명','야경·네온','부드러운 확산광']},
-        {id:'ratio', l:'비율', em:'📐', t:'sel', opts:['1:1 정방형','16:9 와이드','9:16 세로','4:3','2:3 포스터']},
-        {id:'ex', l:'추가 디테일', em:'📎', t:'ta', ph:'카메라 설정, 피할 요소, 색감, 참고 사진 묘사 등', rows:2},
-      ]},
-      {e:'🖼️', n:'일러스트·아트', d:'디지털 아트·그림체', form:[
-        {id:'concept', l:'그림 콘셉트', em:'💡', t:'text', ph:'예: 판타지 숲 속 요정, 레트로 도시 풍경', req:true},
-        {id:'style', l:'스타일', em:'🎨', t:'sel', opts:['수채화','유화·아크릴','디지털 일러스트','픽셀아트','애니메이션·만화체','미니멀·플랫','스케치·연필화']},
-        {id:'palette', l:'색감·팔레트', em:'🌈', t:'text', ph:'예: 파스텔톤, 어둡고 신비한, 따뜻한 오렌지·베이지'},
-        {id:'mood', l:'전체 분위기', em:'✨', t:'sel', opts:['밝고 생동감','차분하고 아늑한','신비롭고 몽환적','다이나믹·에너지틱','고요하고 서정적']},
-        {id:'ex', l:'추가 요청', em:'📎', t:'ta', ph:'특정 화가 스타일 참고, 포함·제외 요소, 디테일 등', rows:2},
-      ]},
-      {e:'🏷️', n:'로고·브랜딩', d:'아이덴티티 디자인', form:[
-        {id:'brand', l:'브랜드 이름·업종', em:'🏢', t:'text', ph:'예: 친환경 카페 "초록상점", 패션 스타트업', req:true},
-        {id:'style', l:'로고 스타일', em:'🎨', t:'sel', opts:['미니멀·심플','레트로·빈티지','모던·기하학','자연·오가닉','럭셔리·고급','테크·디지털']},
-        {id:'color', l:'원하는 색상', em:'🌈', t:'text', ph:'예: 초록+베이지, 네이비+골드, 밝은 파란색 계열'},
-        {id:'vibe', l:'브랜드 느낌', em:'✨', t:'sel', opts:['신뢰·안정적','트렌디·젊은','친환경·자연','창의·혁신적','고급·프리미엄']},
-        {id:'ex', l:'추가 요청', em:'📎', t:'ta', ph:'피할 디자인, 경쟁사 예시, 특별한 요소 등', rows:2},
-      ]},
-      {e:'🎬', n:'광고·마케팅 비주얼', d:'배너·썸네일·광고', form:[
-        {id:'product', l:'홍보할 제품·서비스', em:'📦', t:'text', ph:'예: 스킨케어 세럼, SaaS 툴, 패션 브랜드', req:true},
-        {id:'type', l:'비주얼 종류', em:'📐', t:'sel', opts:['SNS 광고 배너','유튜브 썸네일','랜딩 페이지 헤더','이메일 헤더','포스터·전단지']},
-        {id:'message', l:'핵심 메시지', em:'💬', t:'text', ph:'예: 피부 고민 해결, 30일 무료 체험, 한정 특가'},
-        {id:'style', l:'디자인 스타일', em:'🎨', t:'sel', opts:['깔끔·미니멀','화려·임팩트 있게','따뜻·감성적','트렌디·힙한','고급스럽고 세련된']},
-        {id:'ex', l:'추가 요청', em:'📎', t:'ta', ph:'컬러 가이드, 포함할 텍스트, 참고 이미지 묘사 등', rows:2},
-      ]},
-      {e:'🌐', n:'UI·웹 시안', d:'앱·웹 디자인 아이디어', form:[
-        {id:'what', l:'디자인할 화면', em:'🖥️', t:'text', ph:'예: 헬스 트래킹 앱 홈 화면, SaaS 대시보드', req:true},
-        {id:'platform', l:'플랫폼', em:'📱', t:'sel', opts:['모바일 앱 (iOS/Android)','웹 브라우저','태블릿','데스크톱 앱','반응형 (모두)']},
-        {id:'style', l:'디자인 방향', em:'🎨', t:'sel', opts:['미니멀·클린','다크 모드','컬러풀·생동감','글래스모피즘','뉴모피즘','머티리얼 디자인']},
-        {id:'color', l:'색상 방향', em:'🌈', t:'text', ph:'예: 파란색 계열, 그린+화이트, 따뜻한 파스텔'},
-        {id:'ex', l:'추가 요청', em:'📎', t:'ta', ph:'포함할 컴포넌트, 참고 앱, 특별 요구사항 등', rows:2},
-      ]},
+      { e:'📸', n:'사실적 사진', d:'포토리얼리스틱',
+        form:[
+          {id:'subject', l:'피사체·장면',  em:'🎯',t:'text',ph:'예: 도심 카페 창가의 여성, 일출 풍경', req:true},
+          {id:'tool',    l:'사용 도구',    em:'🛠️',t:'sel', opts:['Midjourney','DALL-E 3','Stable Diffusion','Adobe Firefly','상관없음']},
+          {id:'lighting',l:'조명·분위기', em:'💡',t:'sel', opts:['자연광·일광','황금빛 골든아워','스튜디오 조명','야경·네온','부드러운 확산광']},
+          {id:'ratio',   l:'비율',        em:'📐',t:'sel', opts:['1:1 정방형','16:9 와이드','9:16 세로','4:3','2:3 포스터']},
+          {id:'ex',      l:'추가 디테일', em:'📎',t:'ta',  ph:'카메라 설정, 피할 요소, 색감 등', rows:2},
+        ],
+        tpl:(v)=>`다음 조건으로 사실적인 사진 이미지를 생성해주세요.
+
+【주 피사체·장면】
+${v.subject||'(피사체를 입력해주세요)'}
+
+【기술 설정】
+• 도구: ${v.tool||'상관없음'}
+• 조명: ${v.lighting||'자연광·일광'}
+• 비율: ${v.ratio||'16:9 와이드'}
+
+【스타일 지시어】
+photorealistic, ultra high quality, 8K resolution, sharp focus, professional photography, ${v.lighting||'natural lighting'}, shot on DSLR
+${v.ex?`\n【추가 디테일】\n${v.ex}`:''}
+
+【제외 요소 (Negative Prompt)】
+cartoon, illustration, painting, blurry, low quality, distorted, watermark, text
+
+${v.tool==='Midjourney'?'--ar '+( v.ratio==='1:1 정방형'?'1:1': v.ratio==='9:16 세로'?'9:16': v.ratio==='4:3'?'4:3': v.ratio==='2:3 포스터'?'2:3':'16:9')+' --v 6 --q 2':''}`
+      },
+      { e:'🖼️', n:'일러스트·아트', d:'디지털 아트·그림체',
+        form:[
+          {id:'concept', l:'그림 콘셉트', em:'💡',t:'text',ph:'예: 판타지 숲 속 요정, 레트로 도시', req:true},
+          {id:'style',   l:'스타일',     em:'🎨',t:'sel', opts:['수채화','유화·아크릴','디지털 일러스트','픽셀아트','애니메이션·만화체','미니멀·플랫','스케치·연필화']},
+          {id:'palette', l:'색감·팔레트',em:'🌈',t:'text',ph:'예: 파스텔톤, 어둡고 신비한, 따뜻한 오렌지'},
+          {id:'mood',    l:'전체 분위기',em:'✨',t:'sel', opts:['밝고 생동감','차분하고 아늑한','신비롭고 몽환적','다이나믹·에너지틱','고요하고 서정적']},
+          {id:'ex',      l:'추가 요청', em:'📎',t:'ta',  ph:'특정 화가 스타일 참고, 포함·제외 요소 등', rows:2},
+        ],
+        tpl:(v)=>`다음 조건으로 일러스트 이미지를 생성해주세요.
+
+【콘셉트】
+${v.concept||'(콘셉트를 입력해주세요)'}
+
+【스타일 설정】
+• 아트 스타일: ${v.style||'디지털 일러스트'}
+• 색감·팔레트: ${v.palette||'(자유)'}
+• 전체 분위기: ${v.mood||'밝고 생동감'}
+
+【스타일 지시어】
+${v.style||'digital illustration'}, highly detailed, artistic, ${v.mood||'vibrant'}, beautiful composition, trending on ArtStation
+${v.ex?`\n【추가 요청】\n${v.ex}`:''}
+
+【제외 요소 (Negative Prompt)】
+photo, realistic, blurry, low quality, bad anatomy, watermark, text, ugly`
+      },
+      { e:'🏷️', n:'로고·브랜딩', d:'아이덴티티 디자인',
+        form:[
+          {id:'brand', l:'브랜드 이름·업종',em:'🏢',t:'text',ph:'예: 친환경 카페 "초록상점", 패션 스타트업', req:true},
+          {id:'style', l:'로고 스타일',    em:'🎨',t:'sel', opts:['미니멀·심플','레트로·빈티지','모던·기하학','자연·오가닉','럭셔리·고급','테크·디지털']},
+          {id:'color', l:'색상 방향',      em:'🌈',t:'text',ph:'예: 초록+베이지, 네이비+골드'},
+          {id:'vibe',  l:'브랜드 느낌',    em:'✨',t:'sel', opts:['신뢰·안정적','트렌디·젊은','친환경·자연','창의·혁신적','고급·프리미엄']},
+          {id:'ex',    l:'추가 요청',      em:'📎',t:'ta',  ph:'피할 디자인, 경쟁사 예시, 특별한 요소 등', rows:2},
+        ],
+        tpl:(v)=>`다음 조건으로 로고 이미지를 생성해주세요.
+
+【브랜드 정보】
+${v.brand||'(브랜드를 입력해주세요)'}
+
+【디자인 방향】
+• 로고 스타일: ${v.style||'미니멀·심플'}
+• 색상: ${v.color||'(자유)'}
+• 브랜드 느낌: ${v.vibe||'신뢰·안정적'}
+
+【스타일 지시어】
+logo design, ${v.style||'minimalist'}, vector style, clean, professional, ${v.vibe||'trustworthy'}, white background, scalable
+${v.ex?`\n【추가 요청】\n${v.ex}`:''}
+
+【제외 요소 (Negative Prompt)】
+photo, realistic, complex, cluttered, low quality, blurry, watermark, text overlay`
+      },
+      { e:'🎬', n:'광고·마케팅 비주얼', d:'배너·썸네일·광고',
+        form:[
+          {id:'product',l:'홍보할 제품·서비스',em:'📦',t:'text',ph:'예: 스킨케어 세럼, SaaS 툴', req:true},
+          {id:'type',   l:'비주얼 종류',       em:'📐',t:'sel', opts:['SNS 광고 배너','유튜브 썸네일','랜딩 페이지 헤더','이메일 헤더','포스터·전단지']},
+          {id:'message',l:'핵심 메시지',       em:'💬',t:'text',ph:'예: 피부 고민 해결, 30일 무료 체험'},
+          {id:'style',  l:'디자인 스타일',     em:'🎨',t:'sel', opts:['깔끔·미니멀','화려·임팩트','따뜻·감성적','트렌디·힙한','고급스럽고 세련된']},
+          {id:'ex',     l:'추가 요청',         em:'📎',t:'ta',  ph:'컬러 가이드, 포함할 텍스트 등', rows:2},
+        ],
+        tpl:(v)=>`다음 조건으로 마케팅 비주얼을 생성해주세요.
+
+【제품·서비스】
+${v.product||'(제품을 입력해주세요)'}
+
+【비주얼 설정】
+• 용도: ${v.type||'SNS 광고 배너'}
+• 핵심 메시지: ${v.message||'(메시지를 입력해주세요)'}
+• 디자인 스타일: ${v.style||'깔끔·미니멀'}
+
+【스타일 지시어】
+marketing visual, ${v.style||'clean minimal'}, commercial photography, product-focused, professional, high-end advertising
+${v.ex?`\n【추가 요청】\n${v.ex}`:''}
+
+【제외 요소 (Negative Prompt)】
+low quality, blurry, amateur, cluttered, watermark, bad text, distorted`
+      },
+      { e:'🌐', n:'UI·웹 시안', d:'앱·웹 디자인 아이디어',
+        form:[
+          {id:'what',    l:'디자인할 화면',em:'🖥️',t:'text',ph:'예: 헬스 트래킹 앱 홈, SaaS 대시보드', req:true},
+          {id:'platform',l:'플랫폼',       em:'📱',t:'sel', opts:['모바일 앱','웹 브라우저','태블릿','데스크톱 앱','반응형 (모두)']},
+          {id:'style',   l:'디자인 방향', em:'🎨',t:'sel', opts:['미니멀·클린','다크 모드','컬러풀·생동감','글래스모피즘','뉴모피즘','머티리얼 디자인']},
+          {id:'color',   l:'색상 방향',   em:'🌈',t:'text',ph:'예: 파란색 계열, 그린+화이트, 따뜻한 파스텔'},
+          {id:'ex',      l:'추가 요청',   em:'📎',t:'ta',  ph:'포함할 컴포넌트, 참고 앱, 특별 요구사항 등', rows:2},
+        ],
+        tpl:(v)=>`다음 조건으로 UI 디자인 시안 이미지를 생성해주세요.
+
+【화면 정보】
+• 화면: ${v.what||'(화면을 입력해주세요)'}
+• 플랫폼: ${v.platform||'모바일 앱'}
+
+【디자인 방향】
+• 스타일: ${v.style||'미니멀·클린'}
+• 색상: ${v.color||'(자유)'}
+
+【스타일 지시어】
+UI design mockup, ${v.platform||'mobile app'}, ${v.style||'clean minimal'}, modern interface, professional UX design, Figma style, flat design, pixel perfect
+${v.ex?`\n【추가 요청】\n${v.ex}`:''}
+
+【제외 요소 (Negative Prompt)】
+photo, realistic, low quality, blurry, old-fashioned, cluttered, watermark`
+      },
     ]
   },
+
+  /* ── 기획·전략 ── */
   {
     id:'plan', emoji:'🚀', name:'기획·전략', desc:'사업계획·마케팅·로드맵',
     cc:'var(--c2)', ccl:'var(--c2l)', ccr:'249,115,22',
     subs:[
-      {e:'📋', n:'사업계획서', d:'창업·신규 사업', form:[
-        {id:'biz', l:'사업 아이디어', em:'💡', t:'text', ph:'예: AI 기반 반려동물 건강 관리 앱', req:true},
-        {id:'stage', l:'사업 단계', em:'📍', t:'sel', opts:['아이디어 단계','MVP 개발 중','초기 운영 중','성장 단계','투자 유치 준비']},
-        {id:'audience', l:'목표 고객', em:'👥', t:'text', ph:'예: 20~40대 반려동물 보호자, 중소기업 HR 담당자'},
-        {id:'goal', l:'계획서 목적', em:'🎯', t:'sel', opts:['내부 기획용','투자자 제안','정부 지원 신청','팀 공유용','멘토링·피드백']},
-        {id:'ex', l:'추가 요청', em:'📎', t:'ta', ph:'강조할 차별화 포인트, 포함할 항목, 분량 요청 등', rows:2},
-      ]},
-      {e:'📣', n:'마케팅 전략', d:'채널·캠페인·그로스', form:[
-        {id:'product', l:'제품·서비스', em:'📦', t:'text', ph:'예: B2C 구독 앱, 오프라인 카페 체인', req:true},
-        {id:'goal', l:'마케팅 목표', em:'🎯', t:'sel', opts:['브랜드 인지도 확산','신규 고객 확보','재구매율 향상','앱 다운로드 증가','매출 직접 증대']},
-        {id:'budget', l:'예산 규모', em:'💰', t:'sel', opts:['소규모 (100만원 이하)','중간 (100~500만원)','대규모 (500만원+)','예산 무관·전략만']},
-        {id:'channel', l:'주요 채널', em:'📡', t:'text', ph:'예: 인스타그램, 유튜브, 구글 광고, 오프라인 행사'},
-        {id:'ex', l:'추가 요청', em:'📎', t:'ta', ph:'경쟁사 참고, 타임라인, KPI, 특별 캠페인 아이디어 등', rows:2},
-      ]},
-      {e:'🗺️', n:'프로젝트 로드맵', d:'일정·마일스톤 계획', form:[
-        {id:'project', l:'프로젝트 이름·목표', em:'🎯', t:'text', ph:'예: 앱 v2.0 출시, 글로벌 진출 준비', req:true},
-        {id:'period', l:'기간', em:'📅', t:'sel', opts:['1개월','3개월','6개월','1년','2년 이상']},
-        {id:'team', l:'팀 규모', em:'👥', t:'sel', opts:['1인 (나 혼자)','소규모 (2~5명)','중간 (6~15명)','대규모 (15명+)']},
-        {id:'milestone', l:'주요 마일스톤', em:'🏁', t:'text', ph:'예: 베타 출시, 1000 유저 확보, 투자 유치 완료'},
-        {id:'ex', l:'추가 요청', em:'📎', t:'ta', ph:'위험 요소, 우선순위 기준, 원하는 형식 등', rows:2},
-      ]},
-      {e:'💼', n:'제안서·프레젠테이션', d:'PT·덱·발표 자료', form:[
-        {id:'topic', l:'제안 주제', em:'💡', t:'text', ph:'예: 신규 서비스 도입 제안, 파트너십 협력 요청', req:true},
-        {id:'audience', l:'발표 대상', em:'👥', t:'sel', opts:['경영진·임원','투자자·VC','잠재 고객','팀원·내부','파트너사·외부']},
-        {id:'slides', l:'슬라이드 수', em:'📊', t:'sel', opts:['5장 이내 (핵심만)','10장 내외','15~20장','분량 제한 없음']},
-        {id:'tone', l:'발표 톤', em:'🎭', t:'sel', opts:['설득·임팩트 중심','데이터·논리 중심','스토리텔링 방식','간결·직관적']},
-        {id:'ex', l:'추가 요청', em:'📎', t:'ta', ph:'포함할 데이터, 강조할 포인트, 구성 순서 아이디어 등', rows:2},
-      ]},
-      {e:'🎯', n:'OKR·목표 설정', d:'목표·KPI·성과 관리', form:[
-        {id:'org', l:'조직·팀 이름', em:'🏢', t:'text', ph:'예: 마케팅팀, 스타트업 전체, 개인 목표', req:true},
-        {id:'period', l:'기간', em:'📅', t:'sel', opts:['월간','분기 (3개월)','반기 (6개월)','연간']},
-        {id:'direction', l:'핵심 방향', em:'🧭', t:'text', ph:'예: 매출 성장, 고객 만족도 향상, 팀 역량 강화'},
-        {id:'count', l:'OKR 개수', em:'🔢', t:'sel', opts:['O 1개, KR 3개','O 2개, KR 각 3개','O 3개, KR 각 2~3개','자유롭게']},
-        {id:'ex', l:'추가 요청', em:'📎', t:'ta', ph:'현재 상황, 포함할 부서, 측정 방법 선호 등', rows:2},
-      ]},
+      { e:'📋', n:'사업계획서', d:'창업·신규 사업',
+        form:[
+          {id:'biz',     l:'사업 아이디어', em:'💡',t:'text',ph:'예: AI 기반 반려동물 건강 관리 앱', req:true},
+          {id:'stage',   l:'사업 단계',     em:'📍',t:'sel', opts:['아이디어 단계','MVP 개발 중','초기 운영 중','성장 단계','투자 유치 준비']},
+          {id:'audience',l:'목표 고객',     em:'👥',t:'text',ph:'예: 20~40대 반려동물 보호자'},
+          {id:'goal',    l:'계획서 목적',   em:'🎯',t:'sel', opts:['내부 기획용','투자자 제안','정부 지원 신청','팀 공유용']},
+          {id:'ex',      l:'추가 요청',     em:'📎',t:'ta',  ph:'강조할 차별화, 포함할 항목, 분량 요청 등', rows:2},
+        ],
+        tpl:(v)=>`당신은 스타트업 전문 컨설턴트이자 사업계획서 작성 전문가입니다.
+
+다음 정보로 ${v.goal||'투자자 제안'}을 위한 사업계획서를 작성해주세요.
+
+• 사업 아이디어: ${v.biz||'(사업 내용을 입력해주세요)'}
+• 현재 단계: ${v.stage||'아이디어 단계'}
+• 목표 고객: ${v.audience||'(목표 고객을 입력해주세요)'}
+
+구성 항목:
+1. 비전 & 미션 (1~2문장)
+2. 문제 정의 & 솔루션
+3. 목표 시장 & 고객 (TAM-SAM-SOM)
+4. 비즈니스 모델 (수익 구조)
+5. 경쟁 우위 & 차별화 포인트
+6. 팀 구성 (역할 제안)
+7. 로드맵 & 마일스톤
+8. 필요 자원 & 투자 계획
+${v.ex?`\n추가 요청: ${v.ex}`:''}
+
+설득력 있고 구체적인 사업계획서로 작성해주세요.`
+      },
+      { e:'📣', n:'마케팅 전략', d:'채널·캠페인·그로스',
+        form:[
+          {id:'product', l:'제품·서비스', em:'📦',t:'text',ph:'예: B2C 구독 앱, 오프라인 카페 체인', req:true},
+          {id:'goal',    l:'마케팅 목표',em:'🎯',t:'sel', opts:['브랜드 인지도 확산','신규 고객 확보','재구매율 향상','앱 다운로드 증가','매출 직접 증대']},
+          {id:'budget',  l:'예산 규모',  em:'💰',t:'sel', opts:['소규모 (100만원 이하)','중간 (100~500만원)','대규모 (500만원+)','예산 무관·전략만']},
+          {id:'channel', l:'주요 채널', em:'📡',t:'text',ph:'예: 인스타그램, 유튜브, 구글 광고'},
+          {id:'ex',      l:'추가 요청', em:'📎',t:'ta',  ph:'경쟁사 참고, 타임라인, KPI 등', rows:2},
+        ],
+        tpl:(v)=>`당신은 그로스 마케팅 전략가입니다.
+
+다음 조건으로 실행 가능한 마케팅 전략을 수립해주세요.
+
+• 제품·서비스: ${v.product||'(제품을 입력해주세요)'}
+• 마케팅 목표: ${v.goal||'신규 고객 확보'}
+• 예산 규모: ${v.budget||'중간 (100~500만원)'}${v.channel?`\n• 주요 채널: ${v.channel}`:''}
+
+전략 구성:
+1. 타겟 고객 페르소나 정의
+2. 핵심 메시지 & 포지셔닝
+3. 채널별 실행 전략 (우선순위 포함)
+4. 콘텐츠 캘린더 (4주 기준)
+5. 예산 배분 계획
+6. KPI & 성과 측정 방법
+7. A/B 테스트 제안
+${v.ex?`\n추가 요청: ${v.ex}`:''}
+
+즉시 실행 가능한 액션 아이템으로 구성해주세요.`
+      },
+      { e:'🗺️', n:'프로젝트 로드맵', d:'일정·마일스톤 계획',
+        form:[
+          {id:'project',  l:'프로젝트·목표', em:'🎯',t:'text',ph:'예: 앱 v2.0 출시, 글로벌 진출 준비', req:true},
+          {id:'period',   l:'기간',          em:'📅',t:'sel', opts:['1개월','3개월','6개월','1년','2년 이상']},
+          {id:'team',     l:'팀 규모',       em:'👥',t:'sel', opts:['1인 (나 혼자)','소규모 (2~5명)','중간 (6~15명)','대규모 (15명+)']},
+          {id:'milestone',l:'주요 마일스톤', em:'🏁',t:'text',ph:'예: 베타 출시, 1000 유저 확보'},
+          {id:'ex',       l:'추가 요청',     em:'📎',t:'ta',  ph:'위험 요소, 우선순위 기준, 형식 등', rows:2},
+        ],
+        tpl:(v)=>`당신은 프로젝트 매니저(PMP) 전문가입니다.
+
+다음 조건으로 실행 가능한 프로젝트 로드맵을 작성해주세요.
+
+• 프로젝트·목표: ${v.project||'(프로젝트를 입력해주세요)'}
+• 기간: ${v.period||'3개월'}
+• 팀 규모: ${v.team||'소규모 (2~5명)'}${v.milestone?`\n• 주요 마일스톤: ${v.milestone}`:''}
+
+로드맵 구성:
+1. 프로젝트 개요 & 목표 (SMART 기준)
+2. 단계별 로드맵 (간트 차트 형식)
+3. 마일스톤 & 산출물 (Deliverable)
+4. 리소스 배분 계획
+5. 리스크 & 대응 방안
+6. 성공 기준 & KPI
+${v.ex?`\n추가 요청: ${v.ex}`:''}
+
+팀이 바로 실행할 수 있는 구체적인 로드맵을 제공해주세요.`
+      },
+      { e:'💼', n:'제안서·프레젠테이션', d:'PT·덱·발표 자료',
+        form:[
+          {id:'topic',   l:'제안 주제',  em:'💡',t:'text',ph:'예: 신규 서비스 도입 제안, 파트너십 협력', req:true},
+          {id:'audience',l:'발표 대상', em:'👥',t:'sel', opts:['경영진·임원','투자자·VC','잠재 고객','팀원·내부','파트너사·외부']},
+          {id:'slides',  l:'슬라이드 수',em:'📊',t:'sel', opts:['5장 이내 (핵심만)','10장 내외','15~20장','분량 제한 없음']},
+          {id:'tone',    l:'발표 톤',   em:'🎭',t:'sel', opts:['설득·임팩트 중심','데이터·논리 중심','스토리텔링 방식','간결·직관적']},
+          {id:'ex',      l:'추가 요청', em:'📎',t:'ta',  ph:'포함할 데이터, 강조할 포인트 등', rows:2},
+        ],
+        tpl:(v)=>`당신은 맥킨지 출신 전략 컨설턴트이자 프레젠테이션 전문가입니다.
+
+다음 조건으로 ${v.slides||'10장 내외'} 분량의 프레젠테이션 구성안을 작성해주세요.
+
+• 주제: ${v.topic||'(주제를 입력해주세요)'}
+• 발표 대상: ${v.audience||'경영진·임원'}
+• 톤: ${v.tone||'설득·임팩트 중심'}
+
+슬라이드 구성:
+각 슬라이드마다 다음을 포함해주세요:
+- 슬라이드 제목
+- 핵심 메시지 (1문장)
+- 포함할 내용·데이터
+- 시각화 방법 제안 (차트/이미지/표)
+
+마지막에 청중의 예상 질문 3가지와 답변 방향도 제안해주세요.
+${v.ex?`\n추가 요청: ${v.ex}`:''}
+
+발표자가 바로 활용할 수 있는 완성도 높은 구성안을 만들어주세요.`
+      },
+      { e:'🎯', n:'OKR·목표 설정', d:'목표·KPI·성과 관리',
+        form:[
+          {id:'org',       l:'조직·팀',    em:'🏢',t:'text',ph:'예: 마케팅팀, 스타트업 전체, 개인 목표', req:true},
+          {id:'period',    l:'기간',       em:'📅',t:'sel', opts:['월간','분기 (3개월)','반기 (6개월)','연간']},
+          {id:'direction', l:'핵심 방향',  em:'🧭',t:'text',ph:'예: 매출 성장, 고객 만족도 향상, 팀 역량 강화'},
+          {id:'count',     l:'OKR 개수',   em:'🔢',t:'sel', opts:['O 1개, KR 3개','O 2개, KR 각 3개','O 3개, KR 각 2~3개','자유롭게']},
+          {id:'ex',        l:'추가 요청',  em:'📎',t:'ta',  ph:'현재 상황, 측정 방법 선호 등', rows:2},
+        ],
+        tpl:(v)=>`당신은 OKR 코치이자 조직 성과 관리 전문가입니다.
+
+다음 조건으로 ${v.period||'분기'} OKR을 설계해주세요.
+
+• 조직·팀: ${v.org||'(조직을 입력해주세요)'}
+• 기간: ${v.period||'분기 (3개월)'}${v.direction?`\n• 핵심 방향: ${v.direction}`:''}
+• 구성: ${v.count||'O 2개, KR 각 3개'}
+
+OKR 설계 원칙:
+1. Objective: 영감을 주고 도전적인 목표 (정성적)
+2. Key Results: SMART 기준, 측정 가능한 결과 (정량적)
+3. 각 KR에 현재값 → 목표값 형식으로 작성
+4. 이니셔티브 (실행 방안) 제안
+5. 체크인 주기 및 리뷰 방법 안내
+${v.ex?`\n추가 요청: ${v.ex}`:''}
+
+팀이 즉시 도입할 수 있는 구체적인 OKR을 만들어주세요.`
+      },
     ]
   },
 ];
 
-/* ─── STATE ─── */
-let selCat=null, selSubs=new Set(), busy=false, outTxt='';
+/* ══════════════════════════════════════════
+   STATE
+══════════════════════════════════════════ */
+let selCat=null, selSubs=new Set();
 
-/* ─── RENDER CATS ─── */
+/* ══════════════════════════════════════════
+   RENDER CATEGORIES
+══════════════════════════════════════════ */
 const cg=document.getElementById('catGrid');
-CATS.forEach((c,i)=>{
+CATS.forEach(c=>{
   const b=document.createElement('button');
   b.className='cat-card'; b.dataset.id=c.id;
   b.style.setProperty('--cc',c.cc);
   b.style.setProperty('--ccl',c.ccl);
   b.style.setProperty('--ccr',c.ccr);
-  b.setAttribute('aria-label',c.name);
   b.innerHTML=`<div class="cat-emoji">${c.emoji}</div><div class="cat-name">${c.name}</div><div class="cat-desc">${c.desc}</div>`;
   b.onclick=()=>pickCat(c.id);
   cg.appendChild(b);
 });
 
-function reveal(id){
-  const el=document.getElementById(id);
-  el.classList.remove('hidden');
-  el.style.animation='none';
-  void el.offsetWidth; /* force reflow to restart animation */
-  el.style.animation='popUp .38s cubic-bezier(.34,1.56,.64,1) both';
-}
-
+/* ══════════════════════════════════════════
+   PICK CATEGORY
+══════════════════════════════════════════ */
 function pickCat(id){
   selCat=id; selSubs.clear();
-  document.querySelectorAll('.cat-card').forEach(b=>{
-    b.classList.toggle('on',b.dataset.id===id);
-  });
+  document.querySelectorAll('.cat-card').forEach(b=>b.classList.toggle('on',b.dataset.id===id));
   const cat=CATS.find(c=>c.id===id);
 
-  /* reset step badges when re-selecting category */
-  const n2=document.getElementById('n2'),n3=document.getElementById('n3');
-  n2.classList.remove('done'); n2.textContent='2';
-  n3.classList.remove('done'); n3.textContent='3';
-
-  /* mark step 1 done */
+  /* reset step 2/3 badges */
+  ['n2','n3'].forEach(nid=>{
+    const el=document.getElementById(nid);
+    el.classList.remove('done'); el.textContent=nid==='n2'?'2':'3';
+  });
   markDone('n1'); setTracker(2);
 
   /* build subtypes */
@@ -612,37 +1017,31 @@ function pickCat(id){
     const btn=document.createElement('button');
     btn.className='sub-item'; btn.dataset.idx=i;
     btn.style.setProperty('--cc',cat.cc);
-    btn.setAttribute('aria-pressed','false');
+    btn.style.setProperty('--ccl',cat.ccl);
     btn.innerHTML=`<div class="sub-check">✓</div><div class="sub-icon">${s.e}</div><div class="sub-info"><div class="sub-name">${s.n}</div><div class="sub-desc">${s.d}</div></div>`;
     btn.onclick=()=>{
       const on=btn.classList.toggle('on');
-      btn.setAttribute('aria-pressed',on);
       on?selSubs.add(i):selSubs.delete(i);
       buildForm(cat);
     };
     sl.appendChild(btn);
   });
 
-  /* reveal step 2 & 3 */
-  reveal('s2');
-  buildForm(cat);
-  reveal('s3');
+  reveal('s2'); buildForm(cat); reveal('s3');
   setTimeout(()=>document.getElementById('s2').scrollIntoView({behavior:'smooth',block:'nearest'}),120);
 }
 
+/* ══════════════════════════════════════════
+   BUILD FORM
+══════════════════════════════════════════ */
 function buildForm(cat){
   const fw=document.getElementById('formWrap');
-
-  /* selected subs — filter out any stale indices beyond this cat's subs length */
   const idxs=[...selSubs].filter(i=>i<cat.subs.length);
   const active=idxs.length?idxs.map(i=>cat.subs[i]):[cat.subs[0]];
 
-  /* ── preserve existing input values before clearing ── */
+  /* save existing values */
   const saved={};
-  fw.querySelectorAll('input,select,textarea').forEach(el=>{
-    if(el.id) saved[el.id]=el.value;
-  });
-
+  fw.querySelectorAll('input,select,textarea').forEach(el=>{ if(el.id) saved[el.id]=el.value; });
   fw.innerHTML='';
 
   active.forEach((sub,si)=>{
@@ -654,19 +1053,18 @@ function buildForm(cat){
       fw.appendChild(hdr);
     }
 
-    /* build fields, pairing adjacent text/select in rows of 2 */
     const fields=sub.form; let fi=0;
     while(fi<fields.length){
       const f=fields[fi];
       if(f.t==='ta'||fi===fields.length-1){
-        fw.appendChild(mkField(f,sub,si,saved));fi++;
+        fw.appendChild(mkField(f,si,saved)); fi++;
       } else {
         const nxt=fields[fi+1];
         if(nxt&&nxt.t!=='ta'){
           const row=document.createElement('div'); row.className='two';
-          row.appendChild(mkField(f,sub,si,saved)); row.appendChild(mkField(nxt,sub,si,saved));
+          row.appendChild(mkField(f,si,saved)); row.appendChild(mkField(nxt,si,saved));
           fw.appendChild(row); fi+=2;
-        } else { fw.appendChild(mkField(f,sub,si,saved)); fi++; }
+        } else { fw.appendChild(mkField(f,si,saved)); fi++; }
       }
     }
   });
@@ -675,32 +1073,33 @@ function buildForm(cat){
     active.length===1?`${active[0].e} ${active[0].n} — 내용 입력`:'선택한 유형 내용 입력';
 }
 
-function mkField(f,sub,si,saved={}){
+function mkField(f,si,saved={}){
   const wrap=document.createElement('div'); wrap.className='field';
   const uid=`f_${si}_${f.id}`;
   const prev=saved[uid]||'';
   let ctrl='';
   if(f.t==='text'){
-    const safeVal=prev.replace(/"/g,'&quot;');
-    ctrl=`<input type="text" id="${uid}" placeholder="${f.ph||''}" value="${safeVal}" ${f.req?'required':''}>`;
+    ctrl=`<input type="text" id="${uid}" placeholder="${f.ph||''}" value="${prev.replace(/"/g,'&quot;')}" ${f.req?'required':''}>`;
   } else if(f.t==='sel'){
     const opts=f.opts.map(o=>`<option value="${o}"${o===prev?' selected':''}>${o}</option>`).join('');
     ctrl=`<select id="${uid}"><option value=""${prev?'':' selected'}>선택해주세요</option>${opts}</select>`;
   } else {
     ctrl=`<textarea id="${uid}" rows="${f.rows||2}" placeholder="${f.ph||''}">${prev.replace(/</g,'&lt;')}</textarea>`;
   }
-  wrap.innerHTML=`<label class="field-lbl" for="${uid}"><span class="field-em">${f.em}</span>${f.l}${f.req?'<span style="color:var(--accent);margin-left:2px;font-size:14px;">*</span>':''}</label>${ctrl}`;
+  wrap.innerHTML=`<label class="field-lbl" for="${uid}"><span class="field-em">${f.em}</span>${f.l}${f.req?'<span style="color:var(--accent);margin-left:2px">*</span>':''}</label>${ctrl}`;
   return wrap;
 }
 
-/* ─── GENERATE ─── */
-async function doGen(){
-  if(busy||!selCat)return;
+/* ══════════════════════════════════════════
+   GENERATE — purely local, no API
+══════════════════════════════════════════ */
+function doGen(){
+  if(!selCat) return;
   const cat=CATS.find(c=>c.id===selCat);
   const idxs=[...selSubs].filter(i=>i<cat.subs.length);
   const active=idxs.length?idxs.map(i=>cat.subs[i]):[cat.subs[0]];
 
-  /* validate required */
+  /* validate required fields */
   for(let si=0;si<active.length;si++){
     const sub=active[si];
     const reqF=sub.form.find(f=>f.req);
@@ -715,154 +1114,116 @@ async function doGen(){
     }
   }
 
-  /* collect data */
-  const sections=active.map((sub,si)=>{
-    const data={};
+  /* collect values & build prompt */
+  const parts=[];
+  active.forEach((sub,si)=>{
+    const v={};
     sub.form.forEach(f=>{
       const el=document.getElementById(`f_${si}_${f.id}`);
-      if(el?.value.trim()) data[f.l]=el.value.trim();
+      if(el) v[f.id]=el.value.trim();
     });
-    return {name:sub.n, data};
+    parts.push(sub.tpl(v));
   });
 
-  busy=true; outTxt='';
-  const btn=document.getElementById('genBtn'); btn.disabled=true;
-  document.getElementById('gIcon').className='spin'; document.getElementById('gIcon').textContent='⟳';
-  document.getElementById('gTxt').textContent='AI가 작성 중...';
-  /* ensure badges are in undone state before marking done (handles re-generate) */
-  ['n2','n3'].forEach(id=>{const el=document.getElementById(id);el.classList.remove('done');});
+  const prompt=parts.join('\n\n---\n\n');
+
   markDone('n2'); markDone('n3'); setTracker(4);
 
-  const dataStr=sections.map(s=>`[${s.name}]\n`+Object.entries(s.data).map(([k,v])=>`  ${k}: ${v}`).join('\n')).join('\n\n');
-
-  const sys=`당신은 세계 최고의 AI 프롬프트 엔지니어입니다.
-사용자의 목적과 입력 정보를 바탕으로, 즉시 붙여넣기해서 쓸 수 있는 최고 품질의 AI 프롬프트를 한국어로 작성하세요.
-
-원칙:
-1. "당신은 [전문가 역할]입니다." 로 시작해 역할을 명확히 정의
-2. 구체적 맥락과 조건 포함
-3. 명확한 작업 지시 및 단계별 사고 유도
-4. 출력 형식·길이·톤 명시
-5. 주의사항 및 제약 포함
-
-마크다운 없이, 설명 없이, 프롬프트 본문만 출력하세요.`;
-
-  const usr=`목적 카테고리: ${cat.name}
-선택한 세부 유형: ${active.map(s=>s.name).join(', ')}
-
-입력 정보:
-${dataStr}
-
-위를 바탕으로 최적화된 AI 프롬프트를 바로 사용할 수 있도록 완성해주세요.`;
-
-  /* output shell */
+  /* render output */
   const oa=document.getElementById('outArea');
   oa.innerHTML=`<div class="out-box" id="outBox">
     <div class="out-bar">
       <div class="tl"><div class="tld tl-r"></div><div class="tld tl-y"></div><div class="tld tl-g"></div></div>
-      <div class="out-tab">✨ prompt.txt — ${cat.name} · ${active.map(s=>s.name).join(', ')}</div>
+      <div class="out-tab">✨ 생성된 프롬프트 — ${cat.name} · ${active.map(s=>s.n).join(', ')}</div>
       <button class="cp-btn" id="cpBtn" onclick="doCopy()">📋 복사</button>
     </div>
-    <div class="out-content" id="outContent"><span class="cursor"></span></div>
+    <div class="out-content" id="outContent"></div>
     <div class="out-foot">
       <div class="stat">글자 <b id="sc">0</b></div>
       <div class="stat">토큰 <b id="sk">0</b></div>
-      <div class="qwrap"><div class="qlbl">품질</div><div class="qtrack"><div class="qfill" id="qf" style="width:0%"></div></div><div class="qscore" id="qs">—</div></div>
+      <div class="qwrap">
+        <div class="qlbl">완성도</div>
+        <div class="qtrack"><div class="qfill" id="qf" style="width:0%"></div></div>
+        <div class="qscore" id="qs">—</div>
+      </div>
     </div>
+  </div>
+  <div class="tip-box">
+    <div class="tip-icon">💡</div>
+    <div class="tip-text">위 프롬프트를 <strong>ChatGPT, Claude, Gemini</strong> 등 AI 채팅창에 붙여넣기해서 바로 사용하세요! 더 구체적인 내용을 입력할수록 결과물이 정확해져요.</div>
   </div>`;
-  oa.scrollIntoView({behavior:'smooth',block:'nearest'});
 
-  try{
-    const res=await fetch('https://api.anthropic.com/v1/messages',{
-      method:'POST',
-      headers:{
-        'Content-Type':'application/json',
-        'anthropic-version':'2023-06-01',
-        'anthropic-dangerous-direct-browser-access':'true'
-      },
-      body:JSON.stringify({
-        model:'claude-sonnet-4-5',max_tokens:1000,stream:true,
-        system:sys,messages:[{role:'user',content:usr}]
-      })
-    });
+  /* typewriter effect */
+  const ce=document.getElementById('outContent');
+  let i=0, out='';
+  const chars=prompt.split('');
 
-    /* surface HTTP errors (4xx/5xx) before trying to read stream */
-    if(!res.ok){
-      let errMsg=`HTTP ${res.status}`;
-      try{ const j=await res.json(); errMsg=j?.error?.message||errMsg; }catch{}
-      throw new Error(errMsg);
+  function type(){
+    if(i<chars.length){
+      const chunk=Math.min(8,chars.length-i); // 8 chars per frame for speed
+      out+=chars.slice(i,i+chunk).join('');
+      ce.textContent=out;
+      i+=chunk;
+      const n=out.length;
+      document.getElementById('sc').textContent=n.toLocaleString();
+      document.getElementById('sk').textContent=Math.round(n/3.5).toLocaleString();
+      requestAnimationFrame(type);
+    } else {
+      /* final quality score */
+      const filled=active.reduce((acc,sub,si)=>{
+        return acc+sub.form.filter(f=>{
+          const el=document.getElementById(`f_${si}_${f.id}`);
+          return el&&el.value.trim();
+        }).length;
+      },0);
+      const total=active.reduce((a,s)=>a+s.form.length,0);
+      const score=Math.min(98,Math.round(55+(filled/total)*43));
+      setTimeout(()=>{
+        document.getElementById('qf').style.width=score+'%';
+        document.getElementById('qs').textContent=score+'점';
+      },200);
     }
-
-    const reader=res.body.getReader(),dec=new TextDecoder();
-    /* guard: outContent may be replaced if user navigates away */
-    let ce=document.getElementById('outContent');
-    if(!ce) throw new Error('출력 영역을 찾을 수 없습니다');
-    ce.innerHTML='<span class="cursor"></span>';
-
-    while(true){
-      const{done,value}=await reader.read(); if(done)break;
-      for(const line of dec.decode(value).split('\n')){
-        if(!line.startsWith('data: '))continue;
-        const d=line.slice(6); if(d==='[DONE]')continue;
-        try{
-          const p=JSON.parse(d);
-          if(p.type==='content_block_delta'&&p.delta?.text){
-            outTxt+=p.delta.text;
-            ce=document.getElementById('outContent'); /* re-query in case DOM updated */
-            if(ce){ ce.innerHTML=esc(outTxt)+'<span class="cursor"></span>'; upStats(); }
-          }
-        }catch{}
-      }
-    }
-    ce=document.getElementById('outContent');
-    if(ce){ ce.innerHTML=esc(outTxt); upStats(); upQual(); }
-  }catch(e){
-    const ce=document.getElementById('outContent');
-    if(ce) ce.innerHTML=`<span style="color:#f87171">⚠ 오류: ${e.message}</span>`;
   }
+  requestAnimationFrame(type);
 
-  busy=false; btn.disabled=false;
-  document.getElementById('gIcon').className=''; document.getElementById('gIcon').textContent='🔄';
-  document.getElementById('gTxt').textContent='다시 생성하기';
+  oa.scrollIntoView({behavior:'smooth',block:'nearest'});
 }
 
-function esc(t){return t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
-function upStats(){
-  const n=outTxt.length;
-  document.getElementById('sc').textContent=n.toLocaleString();
-  document.getElementById('sk').textContent=Math.round(n/3.5).toLocaleString();
-}
-function upQual(){
-  const t=outTxt; let s=42;
-  if(t.length>200)s+=13; if(t.length>450)s+=10;
-  if(/전문가|역할|당신은/.test(t))s+=10;
-  if(/단계|step|먼저|다음/.test(t))s+=10;
-  if(/형식|출력|결과|포함/.test(t))s+=8;
-  if(/주의|반드시|절대|금지/.test(t))s+=5;
-  if(/예시|예를/.test(t))s+=5;
-  s=Math.min(s,98);
-  setTimeout(()=>{document.getElementById('qf').style.width=s+'%';document.getElementById('qs').textContent=s+'점';},250);
-}
+/* ══════════════════════════════════════════
+   HELPERS
+══════════════════════════════════════════ */
 function doCopy(){
-  if(!outTxt)return;
-  navigator.clipboard.writeText(outTxt).then(()=>{
+  const ce=document.getElementById('outContent');
+  if(!ce) return;
+  navigator.clipboard.writeText(ce.textContent).then(()=>{
     const b=document.getElementById('cpBtn');
     b.className='cp-btn ok'; b.textContent='✅ 복사됨!';
     setTimeout(()=>{b.className='cp-btn'; b.textContent='📋 복사';},2200);
   });
 }
+
+function reveal(id){
+  const el=document.getElementById(id);
+  el.classList.remove('hidden');
+  el.style.animation='none';
+  void el.offsetWidth;
+  el.style.animation='popUp .38s cubic-bezier(.34,1.56,.64,1) both';
+}
+
 function markDone(id){
   const el=document.getElementById(id);
   if(!el||el.classList.contains('done')) return;
   el.classList.add('done'); el.textContent='✓';
 }
+
 function setTracker(step){
   [1,2,3,4].forEach(n=>{
     const ts=document.getElementById('ts'+n);
     const tn=document.getElementById('tn'+n);
-    if(n<step){ts.className='tr-step done';tn.textContent='✓';}
-    else if(n===step){ts.className='tr-step act';tn.textContent=n;}
-    else{ts.className='tr-step';tn.textContent=n;}
+    if(!ts||!tn) return;
+    if(n<step){ ts.className='tr-step done'; tn.textContent='✓'; }
+    else if(n===step){ ts.className='tr-step act'; tn.textContent=n; }
+    else{ ts.className='tr-step'; tn.textContent=n; }
   });
 }
 </script>
