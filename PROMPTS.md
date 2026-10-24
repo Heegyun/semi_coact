@@ -4,12 +4,8 @@
 
 ## 📖 목차
 
--
 - 클로드 코드 활용
 - 게임 제작으로 배우는 체계적인 개발과 관리(게임-제작으로-배우는-체계적인-개발과-관리)
-- 클로드 코드에 API 날개 달기(클로드-코드에-api-날개-달기)
-- 클로드 코드 AI 에이전트로 개발팀 구성하기(클로드-코드-ai-에이전트로-개발팀-구성하기)
-- MCP로 클로드 코드의 한계 넘어서기(mcp로-클로드-코드의-한계-넘어서기)
 
 ---
 
@@ -94,27 +90,6 @@ case-studies 섹션에 있는 [Before/After 지표]를 hero-introduction 섹션�
 ---
 
 ### 클로드 코드 시작하기
-
-
-#### 1: 손글씨 숫자 인식 프로그램
-
-```
-손글씨로 숫자를 입력하면 이것을 인식하는 코드를 만들어서 실행해 줘. 모든 코드와 주석을 영어로 작성해 줘.
-```
-
-```
-숫자 인식 프로그램을 윈도우 탐색기에서 클릭해서 실행할 수 있게 해 줘.
-```
-
-#### 2: 프로젝트 분리 및 커스터마이징
-
-```
-# 앞으로 만드는 모든 파일은 날짜와 시간을 주석으로 표시해 줘.
-```
-
-```
-손글씨 인식 프로그램을 웹 버전과 데스크톱 버전으로 나누어 개발하고 싶어. web_version과 desktop_version 폴더를 만들고, 각 폴더에 해당하는 CLAUDE.md 파일도 생성해 줘.
-```
 
 ---
 
@@ -600,38 +575,7 @@ $1은 카테고리, $2는 난이도로 받아서 처리해.
 - 하위 30%: D
 ```
 
-```
-.claude/commands/export-report.md 파일을 새로 만들어 줘.
-teacher_report.html을 읽어서 CSV 또는 PDF로 저장하고,
-teacher-dashboard.md에 이 명령어를 추가해.
-```
 
----
-
-### 클로드 코드에 API 날개 달기
-
-```
-OpenRouter에서 받은 API 키를 .env 파일로 저장했어. 이 키를 안전하게 사용할 수 있도록 준비해 줘.
-```
-
-```
-이제 준비된 API가 실제로 작동하는지 테스트해 줘.
-이미지 인식은 google/gemma-3-27b-it:free 모델을 이용하고,
-텍스트 인식은 deepseek/deepseek-chat -v3.1:free 모델을 이용할 거야.
-API를 통한 텍스트와 이미지 인식을 각각 테스트해서 실행 결과를 알려줘.
-```
-
-#### 냉장고를 부탁해 앱 제작 (3단계)
-
-
-```
-앞서 만든 OpenRouter API를 이용해서, 냉장고 사진에서 재료를 인식하고 레시피를 추천하는 웹 애플리케이션
-을 만들고 싶어. 다음과 같이 3단계로 나누어서 PRD를 만들어 줘.
-1단계는 이미지를 입력받고 google/gemma-3 -27b-it:free 모델을 사용해서 이미지를 인식해.
-2단계는 1단계에서 얻은 정보와 deepseek/deepseek-chat-v3.1:free 모델을 사용해서 레시피를 생성해.
-3단계는 사용자 프로필을 만들어서 레시피를 저장해.
-각 단계를 PRD_step1.md, PRD_step2.md, PRD_step3.md로 나누어 저장해 줘
-```
 
 ```
 PRD_step1.md를 실행해.
@@ -765,10 +709,6 @@ Windows **PowerShell**에서 실행하는 경우:
 claude mcp add sequential-thinking -s local -- npx @modelcontextprotocol/server-sequential-thinking@latest
 ```
 
-(참조) Windows 명령 프롬프트(cmd)에서 실행하는 경우:
-```cmd
-claude mcp add sequential-thinking -s local -- cmd /c npx -y @modelcontextprotocol/server-sequential-thinking@latest
-```
 
 ```
 내 웹 포트폴리오 방문자의 체류 시간을 지금의 2배로 늘리고 싶어. 두 가지 문서를 작성해.
